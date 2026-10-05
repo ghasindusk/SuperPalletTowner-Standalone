@@ -1,0 +1,14 @@
+{
+  "origins.starlight.super_pallet_towner.name": "超マサラ人",
+  "origins.starlight.super_pallet_towner.description": "とある少年は、ポケモンと旅を重ねるうちに、仲間たちの力をその身に宿したという。深まる絆は互いの力を呼び覚まし、時にその少年を、ポケモンをも凌ぐ存在へと変える。\n\n手持ちのタイプから最大3つを選んで共鳴し、トレーナーとポケモンが互いに力を分け合う。",
+  "power.starlight.trainer_type_resonance.name": "タイプ共鳴",
+  "power.starlight.trainer_type_resonance.description": "元気な手持ちポケモンのタイプから最大3つを選び、移動・戦闘・採掘などの恩恵を受ける。キー設定の「タイプ共鳴を開く」から変更できる。",
+  "power.starlight.trainer_pokemon_return.name": "ポケモンへの返礼",
+  "power.starlight.trainer_pokemon_return.description": "共鳴タイプを持つ手持ちポケモン各個体にも対応する効果が届く。主にMinecraftのMobとの戦闘が対象で、通常のポケモン同士のバトルには原則適用されない。",
+  "power.starlight.trainer_resonance_link.name": "共鳴リンクと重奏",
+  "power.starlight.trainer_resonance_link.description": "共鳴中の2〜3タイプをリンク枠に置くと、対応する組み合わせの効果が発動する。効果の詳細はタイプ共鳴画面で確認できる。",
+  "power.starlight.trainer_capture_bonus.name": "トレーナーの素質",
+  "power.starlight.trainer_capture_bonus.description": "ポケモンの捕獲率が基礎値から3%上昇する。",
+  "power.starlight.trainer_party_collapse.name": "仲間が倒れた時",
+  "power.starlight.trainer_party_collapse.description": "元気な手持ちがいた状態から全員瀕死になると、安全なリスポーン地点へ帰還して手持ちが回復する。初回や手持ち0匹の状態では発動しない。"
+}

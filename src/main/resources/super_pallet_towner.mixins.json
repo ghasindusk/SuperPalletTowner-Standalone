@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "starlight.trainer.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": ["LivingEntityIceFrictionMixin"],
+  "client": ["TypeIconMixin"],
+  "injectors": {"defaultRequire": 1}
+}

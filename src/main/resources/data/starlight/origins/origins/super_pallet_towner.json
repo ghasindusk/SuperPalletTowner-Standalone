@@ -1,0 +1,15 @@
+{
+  "name": "origins.starlight.super_pallet_towner.name",
+  "description": "origins.starlight.super_pallet_towner.description",
+  "icon": "mega_showdown:ash_cap",
+  "impact": "high",
+  "order": 39,
+  "powers": [
+    "starlight:trainer_type_resonance",
+    "starlight:trainer_pokemon_return",
+    "starlight:trainer_resonance_link",
+    "starlight:trainer_capture_bonus",
+    "starlight:trainer_party_collapse"
+  ],
+  "upgrades": []
+}

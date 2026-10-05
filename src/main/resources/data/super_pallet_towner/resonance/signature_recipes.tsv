@@ -1,0 +1,25 @@
+# id<TAB>comma-separated canonical types; order preserves the existing UI list and save IDs.
+rock_steel	rock,steel
+fire_steel	fire,steel
+fire_rock	fire,rock
+air_flying	air,flying
+air_electric	air,electric
+electric_steel	electric,steel
+fairy_light	fairy,light
+electric_sound	electric,sound
+sound_steel	sound,steel
+water_grass	water,grass
+dark_ghost	dark,ghost
+ice_water	ice,water
+dragon_fighting	dragon,fighting
+psychic_fairy	psychic,fairy
+bug_grass	bug,grass
+normal_fighting	normal,fighting
+fire_rock_steel	fire,rock,steel
+air_electric_flying	air,electric,flying
+fairy_grass_water	fairy,grass,water
+dark_ghost_psychic	dark,ghost,psychic
+electric_sound_steel	electric,sound,steel
+ice_rock_ground	ice,rock,ground
+dragon_fire_flying	dragon,fire,flying
+fairy_light_psychic	fairy,light,psychic

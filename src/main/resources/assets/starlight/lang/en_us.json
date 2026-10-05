@@ -1,0 +1,14 @@
+{
+  "origins.starlight.super_pallet_towner.name": "Super Pallet Towner",
+  "origins.starlight.super_pallet_towner.description": "A boy who traveled with Pokémon came to carry their power within him. As their bond deepened, he sometimes surpassed even Pokémon.\n\nChoose up to three party types to share power with your Pokémon.",
+  "power.starlight.trainer_type_resonance.name": "Type Resonance",
+  "power.starlight.trainer_type_resonance.description": "Choose up to three types from conscious party Pokémon for movement, combat, mining and other benefits.",
+  "power.starlight.trainer_pokemon_return.name": "Pokémon's Return Gift",
+  "power.starlight.trainer_pokemon_return.description": "Each matching party Pokémon receives a bonus, mainly against Minecraft mobs. Normal Pokémon battles are generally unaffected.",
+  "power.starlight.trainer_resonance_link.name": "Resonance Links and Harmonics",
+  "power.starlight.trainer_resonance_link.description": "Link two or three active types for combination effects. Inspect their details in the Type Resonance screen.",
+  "power.starlight.trainer_capture_bonus.name": "Trainer's Talent",
+  "power.starlight.trainer_capture_bonus.description": "Pokémon catch rate increases by 3% from its base value.",
+  "power.starlight.trainer_party_collapse.name": "When the Party Falls",
+  "power.starlight.trainer_party_collapse.description": "If a previously conscious party fully faints, return to a safe respawn location and heal the party. This does not trigger for a first-time or empty party."
+}
