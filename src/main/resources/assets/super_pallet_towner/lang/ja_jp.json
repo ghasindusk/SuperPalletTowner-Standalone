@@ -132,7 +132,7 @@
   "ui.super_pallet_towner.link_tip_state_resting": "休止中（リンクしたタイプがすべて共鳴中のときに発動）",
   "ui.super_pallet_towner.effects_links": "共鳴リンク",
   "ui.super_pallet_towner.effects_link_resting": "休止中のリンク（効果なし）: %s",
-  "resonance.super_pallet_towner.link.rock_steel.summary": "手に持った道具の採掘ランク +1（速度もそのランク相当）",
+  "resonance.super_pallet_towner.link.rock_steel.summary": "鉱脈共鳴",
   "resonance.super_pallet_towner.link.rock_steel.tier": "採掘ランクが1段階上がる：木→石→鉄→ダイヤ→ネザライト（金はバニラでは木と同じランクなので石相当へ）",
   "resonance.super_pallet_towner.link.rock_steel.speed": "採掘速度も1段階上のランク相当：木%s→石%s→鉄%s→ダイヤ%s→ネザライト%s（効率強化はそのまま足される）",
   "resonance.super_pallet_towner.link.rock_steel.gold": "元の方が速い道具は遅くならない（金%sは速度そのまま。Quarkで鉄まで掘れる金には追加の効果なし）",
@@ -284,5 +284,7 @@
   "ui.super_pallet_towner.neo_hud_button": "タイプ共鳴HUD",
   "ui.super_pallet_towner.neo_hud_title": "タイプ共鳴・リンクHUDの配置",
   "ui.super_pallet_towner.neo_hud_hint": "枠をドラッグして移動 / ＋・−でサイズ変更",
-  "ui.super_pallet_towner.neo_hud_sample": "現在の共鳴がないため見本を表示中"
+  "ui.super_pallet_towner.neo_hud_sample": "現在の共鳴がないため見本を表示中",
+  "ui.super_pallet_towner.hud_animations_on": "アニメーション：オン",
+  "ui.super_pallet_towner.hud_animations_off": "アニメーション：オフ"
 }

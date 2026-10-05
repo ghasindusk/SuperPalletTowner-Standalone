@@ -3,6 +3,7 @@ package starlight.trainer;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.Util;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.List;
@@ -31,6 +32,18 @@ public final class AffinityHud {
     private static final int[] OUTER = HudLayout.discRows(HudLayout.BADGE_RADIUS);
     private static final int[] MIDDLE = HudLayout.discRows(HudLayout.BADGE_RADIUS - 1);
     private static final int[] INNER = HudLayout.discRows(HudLayout.BADGE_RADIUS - 2);
+    /** Disc rows for the activation ring, radius BADGE_RADIUS + k for k in 0..BURST_EXTRA. */
+    private static final int BURST_EXTRA = 8;
+    private static final int[][] BURST_ROWS = new int[BURST_EXTRA + 1][];
+    static {
+        for (int k = 0; k <= BURST_EXTRA; k++) BURST_ROWS[k] = HudLayout.discRows(HudLayout.BADGE_RADIUS + k);
+    }
+
+    // Animation state (render thread only). Times are Util.getMillis().
+    private static final java.util.Map<String, Long> appearedAt = new java.util.HashMap<>();
+    private static final long[] badgeAppear = new long[AffinityView.MAX_SLOTS];
+    private static String linkKey = "";
+    private static long linkSince = Long.MIN_VALUE / 2;
 
     // Shape cache (render thread only), rebuilt when the type list or link set object changes.
     private static List<String> modelTypes;
@@ -107,8 +120,12 @@ public final class AffinityHud {
         pose.translate(p.x(), p.y(), 0F);
         pose.scale(p.scale(), p.scale(), 1F);
         int half = HudLayout.ICON / 2;
+        boolean animate = HudSettings.animations();
+        long now = Util.getMillis();
         if (shape == HudLayout.Shape.LINK && count >= 2) {
             connector(graphics, offsets[0] + half, offsets[1] + half, offsets[2] + half, offsets[3] + half);
+            if (animate) flowOnConnector(graphics, offsets[0] + half, offsets[1] + half,
+                    offsets[2] + half, offsets[3] + half, now);
         } else if (shape == HudLayout.Shape.HARMONIC) {
             for (int i = 0; i < 3; i++) {
                 int j = (i + 1) % 3;
@@ -117,14 +134,31 @@ public final class AffinityHud {
             }
             int cx = (offsets[0] + offsets[2] + offsets[4]) / 3 + half;
             int cy = (offsets[1] + offsets[3] + offsets[5]) / 3 + half;
-            graphics.fill(cx - 2, cy, cx + 3, cy + 1, 0xFFFFFFFF);
-            graphics.fill(cx, cy - 2, cx + 1, cy + 3, 0xFFFFFFFF);
+            if (animate) {
+                flowOnTriangle(graphics, half, now);
+                star(graphics, cx, cy, HudAnimation.starBreath(now));
+            } else {
+                graphics.fill(cx - 2, cy, cx + 3, cy + 1, 0xFFFFFFFF);
+                graphics.fill(cx, cy - 2, cx + 1, cy + 3, 0xFFFFFFFF);
+            }
         }
+        long sinceLink = now - linkSince;
         for (int i = 0; i < count; i++) {
             int x = offsets[i * 2];
             int y = offsets[i * 2 + 1];
+            if (animate && linked[i] && sinceLink >= 0 && sinceLink < HudAnimation.BURST_MS) {
+                burst(graphics, x + half, y + half, sinceLink);
+            }
+            float pop = animate ? HudAnimation.popScale(now - badgeAppear[i]) : 1F;
+            if (pop != 1F) {
+                pose.pushPose();
+                pose.translate(x + half, y + half, 0F);
+                pose.scale(pop, pop, 1F);
+                pose.translate(-(x + half), -(y + half), 0F);
+            }
             badge(graphics, x + half, y + half, linked[i] ? LINK_RING : RESONANCE_RING, typeRing[i]);
             AffinityTypeIcons.draw(graphics, order[i], x, y, HudLayout.ICON);
+            if (pop != 1F) pose.popPose();
         }
         pose.popPose();
     }
@@ -154,7 +188,27 @@ public final class AffinityHud {
             linked[i] = shape == HudLayout.Shape.HARMONIC || (shape == HudLayout.Shape.LINK && i < 2);
             typeRing[i] = 0x90000000 | HudLayout.typeRgb(order[i]);
         }
+        trackAnimation(recipe);
         placedCount = -1;
+    }
+
+    /**
+     * Remembers when each type first appeared (kept while it stays active) and when the current
+     * link started, so badges pop in once and the activation ring plays once per change.
+     */
+    private static void trackAnimation(List<String> recipe) {
+        long now = Util.getMillis();
+        java.util.Set<String> current = new java.util.HashSet<>();
+        for (int i = 0; i < count; i++) {
+            current.add(order[i]);
+            badgeAppear[i] = appearedAt.computeIfAbsent(order[i], key -> now);
+        }
+        appearedAt.keySet().retainAll(current);
+        String key = recipe == null ? "" : shape.name() + ':' + String.join("+", recipe);
+        if (!key.equals(linkKey)) {
+            linkKey = key;
+            linkSince = key.isEmpty() ? Long.MIN_VALUE / 2 : now;
+        }
     }
 
     private static boolean contains(String[] array, int length, String value) {
@@ -217,6 +271,66 @@ public final class AffinityHud {
             graphics.fill(x0 - 1, y0 + r, x0 + 1, y1 - r, LINK_CORE);
             int mid = (y0 + y1) / 2;
             graphics.fill(x0 - 2, mid - 1, x0 + 2, mid + 1, 0xFFFFFFFF);
+        }
+    }
+
+    /** A small bright light travelling along the connector, from the first badge to the second. */
+    private static void flowOnConnector(GuiGraphics graphics, int x0, int y0, int x1, int y1, long now) {
+        int r = HudLayout.BADGE_RADIUS;
+        float t = HudAnimation.flow(now);
+        if (y0 == y1) {
+            if (x1 - x0 <= 2 * r) return;
+            dot(graphics, HudAnimation.lerp(x0 + r, x1 - r, t), y0);
+        } else {
+            if (y1 - y0 <= 2 * r) return;
+            dot(graphics, x0, HudAnimation.lerp(y0 + r, y1 - r, t));
+        }
+    }
+
+    /** The light circles the harmonic triangle once per period (badges cover its corners). */
+    private static void flowOnTriangle(GuiGraphics graphics, int half, long now) {
+        float t = HudAnimation.flow(now) * 3F;
+        int edge = Math.min(2, (int) t);
+        float local = t - edge;
+        int next = (edge + 1) % 3;
+        dot(graphics,
+                HudAnimation.lerp(offsets[edge * 2] + half, offsets[next * 2] + half, local),
+                HudAnimation.lerp(offsets[edge * 2 + 1] + half, offsets[next * 2 + 1] + half, local));
+    }
+
+    private static void dot(GuiGraphics graphics, int x, int y) {
+        graphics.fill(x - 2, y - 1, x + 2, y + 1, LINK_GLOW);
+        graphics.fill(x - 1, y - 2, x + 1, y + 2, LINK_GLOW);
+        graphics.fill(x - 1, y - 1, x + 1, y + 1, 0xFFFFFFFF);
+    }
+
+    /** Harmonic centre: a four-point star that breathes between dim and bright. */
+    private static void star(GuiGraphics graphics, int cx, int cy, float breath) {
+        int arm = 2 + Math.round(breath);
+        int colour = HudAnimation.argb(150 + Math.round(105 * breath), 0xFFFFFF);
+        graphics.fill(cx - arm, cy, cx + arm + 1, cy + 1, colour);
+        graphics.fill(cx, cy - arm, cx + 1, cy + arm + 1, colour);
+        graphics.fill(cx - 1, cy - 1, cx + 2, cy + 2,
+                HudAnimation.argb(Math.round(90 * breath), TypeIconHighlight.LINK_RGB));
+    }
+
+    /** An expanding, fading cyan ring around a badge, played once when a link becomes active. */
+    private static void burst(GuiGraphics graphics, int cx, int cy, long elapsed) {
+        int alpha = HudAnimation.burstAlpha(elapsed);
+        if (alpha <= 0) return;
+        int extra = Math.min(BURST_EXTRA, HudAnimation.burstRadius(elapsed, BURST_EXTRA));
+        int colour = HudAnimation.argb(alpha, TypeIconHighlight.LINK_RGB);
+        int[] rows = BURST_ROWS[extra];
+        int r = HudLayout.BADGE_RADIUS + extra;
+        for (int row = 0; row < rows.length; row++) {
+            int y = cy - r + row;
+            int w = rows[row];
+            // Ring outline: the part of this row outside the neighbouring rows, at least 1 px.
+            int up = row > 0 ? rows[row - 1] : 0;
+            int down = row + 1 < rows.length ? rows[row + 1] : 0;
+            int inner = Math.max(0, Math.min(w - 1, Math.min(up, down)));
+            graphics.fill(cx - w, y, cx - inner, y + 1, colour);
+            graphics.fill(cx + inner, y, cx + w, y + 1, colour);
         }
     }
 

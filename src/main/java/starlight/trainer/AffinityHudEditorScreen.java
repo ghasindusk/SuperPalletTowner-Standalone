@@ -36,6 +36,15 @@ public final class AffinityHudEditorScreen extends Screen {
                 button -> HudSettings.reset()).bounds(6, 6, 75, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("gui.done"), button -> onClose())
                 .bounds(width - 81, 6, 75, 20).build());
+        addRenderableWidget(Button.builder(animationLabel(), button -> {
+                    HudSettings.setAnimations(!HudSettings.animations());
+                    button.setMessage(animationLabel());
+                }).bounds(cx - 60, height - 44, 120, 20).build());
+    }
+
+    private static Component animationLabel() {
+        return Component.translatable(HudSettings.animations()
+                ? "ui.super_pallet_towner.hud_animations_on" : "ui.super_pallet_towner.hud_animations_off");
     }
 
     private void scale(int delta) {

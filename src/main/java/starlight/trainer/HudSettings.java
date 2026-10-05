@@ -20,6 +20,7 @@ public final class HudSettings {
     private static final ModConfigSpec.IntValue OFFSET_Y;
     private static final ModConfigSpec.IntValue CENTER_X;
     private static final ModConfigSpec.IntValue CENTER_Y;
+    private static final ModConfigSpec.BooleanValue ANIMATIONS;
 
     static {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
@@ -40,6 +41,8 @@ public final class HudSettings {
                 .defineInRange("hudCenterX", HudLayout.POSITION_UNIT / 2, 0, HudLayout.POSITION_UNIT);
         CENTER_Y = builder.comment("Custom HUD centre Y in ten-thousandths of the GUI height.")
                 .defineInRange("hudCenterY", HudLayout.POSITION_UNIT / 2, 0, HudLayout.POSITION_UNIT);
+        ANIMATIONS = builder.comment("Animate the HUD (pop-in of new types, link activation ring, flowing link light).")
+                .define("hudAnimations", true);
         builder.pop();
         SPEC = builder.build();
     }
@@ -50,6 +53,7 @@ public final class HudSettings {
     private static volatile int offsetY;
     private static volatile int centerX = HudLayout.POSITION_UNIT / 2;
     private static volatile int centerY = HudLayout.POSITION_UNIT / 2;
+    private static volatile boolean animations = true;
     /** Bumped on every change so the HUD can keep its cached placement until then. */
     private static volatile int version;
 
@@ -70,6 +74,7 @@ public final class HudSettings {
             offsetY = HudLayout.clampOffset(OFFSET_Y.get());
             centerX = CENTER_X.get();
             centerY = CENTER_Y.get();
+            animations = ANIMATIONS.get();
             version++;
         } catch (IllegalStateException | NullPointerException ignored) {
             // Not loaded yet: keep the defaults.
@@ -83,6 +88,18 @@ public final class HudSettings {
     public static int centerX() { return centerX; }
     public static int centerY() { return centerY; }
     public static int version() { return version; }
+    public static boolean animations() { return animations; }
+
+    /** Turns the HUD animations on or off and saves the choice. */
+    public static void setAnimations(boolean on) {
+        animations = on;
+        try {
+            ANIMATIONS.set(on);
+            SPEC.save();
+        } catch (IllegalStateException | NullPointerException ignored) {
+            // Config not loaded: the choice lasts this session only.
+        }
+    }
 
     /** Preview a dragged position independently of the hotbar and the number of icons. */
     public static void previewCustomCenter(double x, double y, int guiWidth, int guiHeight) {

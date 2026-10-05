@@ -132,7 +132,7 @@
   "ui.super_pallet_towner.link_tip_state_resting": "Inactive (works while every linked type is active)",
   "ui.super_pallet_towner.effects_links": "Affinity link",
   "ui.super_pallet_towner.effects_link_resting": "Inactive link (no effect): %s",
-  "resonance.super_pallet_towner.link.rock_steel.summary": "Held tool mines one tier higher (speed of that tier too)",
+  "resonance.super_pallet_towner.link.rock_steel.summary": "Ore Vein",
   "resonance.super_pallet_towner.link.rock_steel.tier": "Harvest tier +1: wood → stone → iron → diamond → netherite (vanilla gold harvests like wood, so it acts as stone)",
   "resonance.super_pallet_towner.link.rock_steel.speed": "Mining speed of the next tier: wood %s → stone %s → iron %s → diamond %s → netherite %s (Efficiency still adds)",
   "resonance.super_pallet_towner.link.rock_steel.gold": "Faster tools never slow down (gold %s keeps its speed; gold that Quark already lets mine iron gains nothing)",
@@ -284,5 +284,7 @@
   "ui.super_pallet_towner.neo_hud_button": "Type Resonance HUD",
   "ui.super_pallet_towner.neo_hud_title": "Type Resonance and Link HUD",
   "ui.super_pallet_towner.neo_hud_hint": "Drag the frame to move / use + and − to resize",
-  "ui.super_pallet_towner.neo_hud_sample": "Showing sample types because none are resonating"
+  "ui.super_pallet_towner.neo_hud_sample": "Showing sample types because none are resonating",
+  "ui.super_pallet_towner.hud_animations_on": "Animations: On",
+  "ui.super_pallet_towner.hud_animations_off": "Animations: Off"
 }

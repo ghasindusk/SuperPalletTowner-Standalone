@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0 — 2026-10-05
+
+- HUD animations: pop-in for newly shown types, a ring burst when a link activates, light flowing along links, and a breathing harmonic star. Toggle with the new HUD editor button or `hudAnimations` in the client config.
+- Resonance screen: slot pop, short confirm sounds, a light sweep on the signature badge, and a breathing outline on the active link row.
+- The info box wraps long messages instead of cutting them off.
+- The Rock + Steel link is now named "Ore Vein"; its effect text stays in the details panel.
+- Verified in an isolated instance: Origin selection with the embedded data and icon, resonance screen and HUD checks.
+
 ## 1.0.0-rc.1 — 2026-10-04
 
 - Split the standalone Super Pallet Towner primary Origin from the private Dragonborn Sub-Origin integration.

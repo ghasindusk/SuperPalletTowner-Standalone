@@ -116,6 +116,9 @@ public final class AffinityScreen extends Screen {
     /** Short confirmation glow, started only after the server accepts a change. */
     private long confirmationUntilMs;
     private boolean confirmationLink;
+    /** Slot that just received a type (pops in), and when. -1 when none. */
+    private int popSlot = -1;
+    private long popSince;
     /** A short message in the info box (why a click did nothing). */
     private long flashUntilMs;
     private Component flash = Component.empty();
@@ -138,7 +141,26 @@ public final class AffinityScreen extends Screen {
         if (!previousSelected.equals(selected) || !previousLink.equals(link)) {
             confirmationLink = previousSelected.equals(selected);
             confirmationUntilMs = net.minecraft.Util.getMillis() + 650L;
+            popSlot = -1;
+            for (int i = 0; i < selected.size(); i++) {
+                if (i >= previousSelected.size() || !selected.get(i).equals(previousSelected.get(i))) {
+                    popSlot = i;
+                    popSince = net.minecraft.Util.getMillis();
+                    break;
+                }
+            }
+            playConfirmSound(confirmationLink, selected.size() >= previousSelected.size() && link.size() >= previousLink.size());
         }
+    }
+
+    /** A soft chime once the server accepts a change: higher for additions, lower for removals. */
+    private void playConfirmSound(boolean linkChange, boolean added) {
+        if (minecraft == null || !HudSettings.animations()) return;
+        var sound = linkChange ? net.minecraft.sounds.SoundEvents.NOTE_BLOCK_CHIME.value()
+                : net.minecraft.sounds.SoundEvents.AMETHYST_BLOCK_CHIME;
+        float pitch = linkChange ? (added ? 1.6F : 1.1F) : (added ? 1.3F : 0.8F);
+        minecraft.getSoundManager().play(
+                net.minecraft.client.resources.sounds.SimpleSoundInstance.forUI(sound, pitch, 0.6F));
     }
 
     // ------------------------------------------------------------------ harness hooks (read only)
@@ -1010,7 +1032,18 @@ public final class AffinityScreen extends Screen {
             String type = selected.get(i);
             boolean on = state == AffinityView.SlotState.ACTIVE;
             if (!on) graphics.setColor(0.45F, 0.45F, 0.45F, 1.0F);
+            float pop = i == popSlot && HudSettings.animations()
+                    ? HudAnimation.popScale(net.minecraft.Util.getMillis() - popSince) : 1F;
+            if (pop != 1F) {
+                float ix = x + 10 + slotIcon / 2F;
+                float iy = iconY + slotIcon / 2F;
+                graphics.pose().pushPose();
+                graphics.pose().translate(ix, iy, 0F);
+                graphics.pose().scale(pop, pop, 1F);
+                graphics.pose().translate(-ix, -iy, 0F);
+            }
             AffinityTypeIcons.draw(graphics, type, x + 10, iconY, slotIcon);
+            if (pop != 1F) graphics.pose().popPose();
             graphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
             Rect remove = removeBox(i);
             boolean removeHovered = remove.contains(mouseX, mouseY);
@@ -1062,16 +1095,21 @@ public final class AffinityScreen extends Screen {
         }
         shownInfo = lines;
         Rect text = info.text();
+        // Wrap long lines (e.g. the "slots are full" message) instead of cutting them; only the
+        // last visible row is cut, with a marker, when more text follows (hover shows it all).
+        List<FormattedCharSequence> rows = new ArrayList<>();
+        for (Component line : lines) rows.addAll(font.split(line, Math.max(1, text.w())));
         int y = text.y();
-        int drawn = 0;
-        for (Component line : lines) {
-            if (drawn >= info.lines()) break;
-            boolean last = drawn == info.lines() - 1 && lines.size() > info.lines();
-            int maxWidth = last ? text.w() - font.width(" ▼") : text.w();
-            drawClipped(graphics, line, text.x(), y, maxWidth, TEXT);
-            if (last) graphics.drawString(font, "▼", text.right() - font.width("▼"), y, MUTED, false);
+        for (int drawn = 0; drawn < rows.size() && drawn < info.lines(); drawn++) {
+            boolean last = drawn == info.lines() - 1 && rows.size() > info.lines();
+            if (last) {
+                int maxWidth = text.w() - font.width(" ▼");
+                drawClippedSequence(graphics, rows.get(drawn), text.x(), y, maxWidth);
+                graphics.drawString(font, "▼", text.right() - font.width("▼"), y, MUTED, false);
+            } else {
+                graphics.drawString(font, rows.get(drawn), text.x(), y, TEXT, false);
+            }
             y += font.lineHeight;
-            drawn++;
         }
         if (text.contains(mouseX, mouseY) && hover == null) return lines;
         return null;
@@ -1234,13 +1272,27 @@ public final class AffinityScreen extends Screen {
         graphics.fill(x, y, x + w, y + h, background);
         if (hovered) graphics.renderOutline(x, y, w, h, s.state() == LinkSuggestions.State.RESTING ? 0xFF808080
                 : s.state() == LinkSuggestions.State.ACTIVE ? RED_TEXT : TEXT);
-        else if (s.state() == LinkSuggestions.State.ACTIVE) graphics.renderOutline(x, y, w, h, GREEN);
+        else if (s.state() == LinkSuggestions.State.ACTIVE) {
+            // The active link breathes gently instead of a static outline.
+            float breath = HudSettings.animations() ? HudAnimation.starBreath(net.minecraft.Util.getMillis()) : 1F;
+            graphics.renderOutline(x, y, w, h, HudAnimation.argb(140 + Math.round(115 * breath), GREEN & 0xFFFFFF));
+        }
         int textY = y + (h - 8) / 2;
         // Badge: gold "special" for Signature, steel blue "standard".
         Component badge = Component.translatable(s.signature() ? "ui.super_pallet_towner.badge_signature"
                 : "ui.super_pallet_towner.badge_standard");
         int badgeW = font.width(badge) + 4;
         graphics.fill(x + 1, y + 1, x + 1 + badgeW, y + h - 1, s.signature() ? 0xFFB8862E : 0xFF4A6488);
+        if (s.signature() && HudSettings.animations()) {
+            // A narrow light sweeps across the gold badge now and then (first third of each cycle).
+            long cycle = Math.floorMod(net.minecraft.Util.getMillis() + y * 37L, 2400L);
+            if (cycle < 800L) {
+                int sweep = x + 1 + Math.round((badgeW + 6) * (cycle / 800F)) - 3;
+                int left = Math.max(x + 1, sweep);
+                int right = Math.min(x + 1 + badgeW, sweep + 3);
+                if (right > left) graphics.fill(left, y + 1, right, y + h - 1, 0x66FFF4C8);
+            }
+        }
         graphics.drawString(font, badge, x + 3, textY, s.signature() ? 0xFF1A1206 : 0xFFE6EEFF, false);
         int cx = x + 3 + badgeW;
         if (s.state() == LinkSuggestions.State.RESTING) graphics.setColor(0.5F, 0.5F, 0.5F, 1.0F);
@@ -1339,6 +1391,17 @@ public final class AffinityScreen extends Screen {
     }
 
     // ------------------------------------------------------------------ text helpers
+
+    /** Draws a wrapped row, cutting it with "…" if it is wider than maxWidth. */
+    private void drawClippedSequence(GuiGraphics graphics, FormattedCharSequence row, int x, int y, int maxWidth) {
+        if (font.width(row) <= maxWidth) {
+            graphics.drawString(font, row, x, y, TEXT, false);
+            return;
+        }
+        StringBuilder plain = new StringBuilder();
+        row.accept((index, style, codePoint) -> { plain.appendCodePoint(codePoint); return true; });
+        drawClipped(graphics, Component.literal(plain.toString()), x, y, maxWidth, TEXT);
+    }
 
     private void drawClipped(GuiGraphics graphics, Component text, int x, int y, int maxWidth, int color) {
         if (maxWidth <= 0) return;
