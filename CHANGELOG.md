@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1 — 2026-10-05
+
+- Mod metadata: author (ghasindusk), project page and issue tracker links, shown in the in-game mod list.
+- The release ZIP now includes the rewritten README.
+
 ## 1.0.0 — 2026-10-05
 
 - HUD animations: pop-in for newly shown types, a ring burst when a link activates, light flowing along links, and a breathing harmonic star. Toggle with the new HUD editor button or `hudAnimations` in the client config.
