@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.1 — 2026-10-09
+
+- Fixed a crash on dedicated servers: the mod failed to load while registering network handlers.
+- Tested on a dedicated server with only the required mods.
+
 ## 1.1.0 — 2026-10-08
 
 - New Origin icon: the Trainer Emblem, a capture ball wearing a red-and-white cap (its own item, `super_pallet_towner:trainer_emblem`).

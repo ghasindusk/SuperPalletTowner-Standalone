@@ -4,7 +4,7 @@
 
 **Cobblemon 向けの NeoOrigins アドオンです。** NeoOrigins のビーストテイマー（Monster Tamer）を、Cobblemon の世界観に合わせたオリジン「超マサラ人」に置き換えます。能力はすぐに使えます。手持ちポケモンのタイプから最大3つを選ぶと、トレーナーとポケモンが互いに力を分け合います。
 
-Minecraft 1.21.1 / NeoForge・バージョン 1.1.0・[English](README.md)
+Minecraft 1.21.1 / NeoForge・バージョン 1.1.1・[English](README.md)
 
 ![オリジン選択画面](docs/images/origin_select.png)
 
@@ -73,7 +73,7 @@ Minecraft 1.21.1 / NeoForge・バージョン 1.1.0・[English](README.md)
 ## 導入
 
 1. ワールドをバックアップします。
-2. [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) から `super_pallet_towner-1.1.0.jar` をダウンロードし、`mods` に入れます。
+2. [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) から `super_pallet_towner-1.1.1.jar` をダウンロードし、`mods` に入れます。
 3. ゲームを起動し、オリジン選択画面で「超マサラ人」を選びます。ビーストテイマーを選んでいたプレイヤーは、自動で超マサラ人に移ります。
 4. 操作設定で「タイプ共鳴を開く」にキーを割り当てます。
 
@@ -84,7 +84,8 @@ Minecraft 1.21.1 / NeoForge・バージョン 1.1.0・[English](README.md)
 - 自動テスト：162件すべて成功
 - ゲーム内：オリジン選択画面、タイプ共鳴画面、HUD を確認済み
 - 前提 MOD だけの環境（NeoForge、Cobblemon と Kotlin for Forge、NeoOrigins）でも、エラーなしで動作を確認
-- 専用サーバーでの動作と、NeoOrigins のオリジン一覧を上書きする他のアドオンとの併用は未確認
+- 専用サーバーで動作確認済み（1.1.1 で、それ以前の版のサーバーでのクラッシュを修正）
+- NeoOrigins のオリジン一覧を上書きする他のアドオンとの併用は未確認
 
 不具合は [Issues](https://github.com/ghasindusk/SuperPalletTowner-Standalone/issues) へお願いします。
 

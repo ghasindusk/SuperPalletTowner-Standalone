@@ -98,9 +98,11 @@ public final class AffinityPackets {
             syncLinks(player, TrainerState.activeLinks(player, active));
             ResonanceLinkEffects.updatePlayer(player, active);
         });
-        registrar.playToClient(Snapshot.TYPE, Snapshot.CODEC, AffinityClient::receiveSnapshot);
-        registrar.playToClient(ActiveTypes.TYPE, ActiveTypes.CODEC, AffinityClient::receiveActiveTypes);
-        registrar.playToClient(ActiveLinks.TYPE, ActiveLinks.CODEC, AffinityClient::receiveActiveLinks);
+        // Lambdas, not method references: a method reference resolves AffinityClient (client-only
+        // classes) at registration time and crashes dedicated servers.
+        registrar.playToClient(Snapshot.TYPE, Snapshot.CODEC, (payload, context) -> AffinityClient.receiveSnapshot(payload, context));
+        registrar.playToClient(ActiveTypes.TYPE, ActiveTypes.CODEC, (payload, context) -> AffinityClient.receiveActiveTypes(payload, context));
+        registrar.playToClient(ActiveLinks.TYPE, ActiveLinks.CODEC, (payload, context) -> AffinityClient.receiveActiveLinks(payload, context));
     }
 
     private static Set<String> eligible(ServerPlayer player) {
