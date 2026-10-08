@@ -83,6 +83,7 @@ Minecraft 1.21.1 / NeoForge・バージョン 1.1.0・[English](README.md)
 
 - 自動テスト：162件すべて成功
 - ゲーム内：オリジン選択画面、タイプ共鳴画面、HUD を確認済み
+- 前提 MOD だけの環境（NeoForge、Cobblemon と Kotlin for Forge、NeoOrigins）でも、エラーなしで動作を確認
 - 専用サーバーでの動作と、NeoOrigins のオリジン一覧を上書きする他のアドオンとの併用は未確認
 
 不具合は [Issues](https://github.com/ghasindusk/SuperPalletTowner-Standalone/issues) へお願いします。

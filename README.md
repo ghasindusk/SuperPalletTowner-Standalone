@@ -83,6 +83,7 @@ The Origin data is inside the Jar, so no separate data pack is needed. This add-
 
 - Automated tests: 162 passed.
 - Checked in game: the Origin screen, the Pokémon Affinity screen and the HUD.
+- Also tested with only the required mods (NeoForge, Cobblemon with Kotlin for Forge, NeoOrigins): loads with no errors.
 - Not yet tested on a dedicated server or with other add-ons that replace the NeoOrigins Origin list.
 
 Please report problems in [Issues](https://github.com/ghasindusk/SuperPalletTowner-Standalone/issues).
