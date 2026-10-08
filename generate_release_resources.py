@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parent
 NEO_JAR = ROOT / "libs" / "neoorigins-2.2.29+1.21.1.jar"
 OUT = ROOT / "src" / "main" / "resources"
 LAYER = "data/neoorigins/origins/origin_layers/origin.json"
-ICON = "mega_showdown:ash_cap"
+ICON = "super_pallet_towner:trainer_emblem"
 POWERS = {
     "type_resonance": (
         "タイプ共鳴",

@@ -1,8 +1,10 @@
+<img src="docs/images/logo.png" width="128" align="right" alt="Super Pallet Towner icon">
+
 # Super Pallet Towner (超マサラ人)
 
 **A NeoOrigins add-on for Cobblemon.** It replaces NeoOrigins' Monster Tamer with an Origin built for the Cobblemon world. Its abilities work right away: pick up to three types from your party Pokémon, and you and your Pokémon share their power.
 
-Minecraft 1.21.1 / NeoForge · Version 1.0.1 · [日本語の説明はこちら](README_JA.md)
+Minecraft 1.21.1 / NeoForge · Version 1.1.0 · [日本語の説明はこちら](README_JA.md)
 
 ![Origin selection](docs/images/origin_select.png)
 
@@ -18,9 +20,9 @@ Minecraft 1.21.1 / NeoForge · Version 1.0.1 · [日本語の説明はこちら]
 
 All bonuses have caps, so the Origin stays balanced with other mods.
 
-## Type Resonance screen
+## Pokémon Affinity screen
 
-Open it with the **Open Type Resonance** key (set it in Controls). Choose the types, check every effect, and link types.
+Open it with the **Open Pokémon Affinity** key (set it in Controls). Choose the types, check every effect, and link types.
 
 ![Resonance effects](docs/images/resonance_effects.png)
 ![Resonance links](docs/images/resonance_links.png)
@@ -48,6 +50,10 @@ Open it with the **Open Type Resonance** key (set it in Controls). Choose the ty
 
 \* Air, Light and Sound are types added by other Cobblemon mods. These links only appear if such a mod is installed.
 
+## Icon
+
+The Origin uses its own icon, the **Trainer Emblem**: a capture ball wearing a red-and-white cap. You can also get it as an item with `/give @s super_pallet_towner:trainer_emblem`.
+
 ## HUD
 
 A small HUD shows your active types and links. Move and resize it in the NeoOrigins HUD editor. New types pop in, a ring bursts when a link activates, and light flows along the links. You can turn the animations off in the HUD editor.
@@ -63,21 +69,20 @@ Install on both client and server.
 | NeoForge (Minecraft 1.21.1) | 21.1.251 |
 | Cobblemon | 1.8.1 |
 | NeoOrigins | 2.2.29 |
-| Cobblemon: Mega Showdown | 1.2.0 (the Origin icon uses its Ash cap item) |
 
 ## Installation
 
 1. Back up your world.
-2. Download `super_pallet_towner-1.0.1.jar` from [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) and put it in `mods`.
+2. Download `super_pallet_towner-1.1.0.jar` from [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) and put it in `mods`.
 3. Start the game and choose **Super Pallet Towner** on the Origin screen. Players who chose Monster Tamer are moved to Super Pallet Towner automatically.
-4. Set a key for **Open Type Resonance** in Controls.
+4. Set a key for **Open Pokémon Affinity** in Controls.
 
 The Origin data is inside the Jar, so no separate data pack is needed. This add-on replaces NeoOrigins' main Origin list to swap out Monster Tamer. Other add-ons that replace the same list may conflict.
 
 ## Status
 
 - Automated tests: 162 passed.
-- Checked in game: the Origin screen, the Type Resonance screen and the HUD.
+- Checked in game: the Origin screen, the Pokémon Affinity screen and the HUD.
 - Not yet tested on a dedicated server or with other add-ons that replace the NeoOrigins Origin list.
 
 Please report problems in [Issues](https://github.com/ghasindusk/SuperPalletTowner-Standalone/issues).
@@ -88,4 +93,4 @@ Requires Java 21. Put the Cobblemon 1.8.1 and NeoOrigins 2.2.29 Jars in `libs/` 
 
 ## License
 
-MIT. This is an unofficial fan project, not endorsed by the developers of Cobblemon, NeoOrigins or Mega Showdown. No assets from those mods are included; see [THIRD_PARTY.md](THIRD_PARTY.md).
+MIT. This is an unofficial fan project, not endorsed by the developers of Cobblemon or NeoOrigins. No assets from those mods are included; see [THIRD_PARTY.md](THIRD_PARTY.md).

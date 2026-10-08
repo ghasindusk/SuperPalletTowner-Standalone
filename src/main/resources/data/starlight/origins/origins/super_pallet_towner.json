@@ -1,7 +1,7 @@
 {
   "name": "origins.starlight.super_pallet_towner.name",
   "description": "origins.starlight.super_pallet_towner.description",
-  "icon": "mega_showdown:ash_cap",
+  "icon": "super_pallet_towner:trainer_emblem",
   "impact": "high",
   "order": 39,
   "powers": [

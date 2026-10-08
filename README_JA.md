@@ -1,8 +1,10 @@
+<img src="docs/images/logo.png" width="128" align="right" alt="超マサラ人のアイコン">
+
 # 超マサラ人（Super Pallet Towner）
 
 **Cobblemon 向けの NeoOrigins アドオンです。** NeoOrigins のビーストテイマー（Monster Tamer）を、Cobblemon の世界観に合わせたオリジン「超マサラ人」に置き換えます。能力はすぐに使えます。手持ちポケモンのタイプから最大3つを選ぶと、トレーナーとポケモンが互いに力を分け合います。
 
-Minecraft 1.21.1 / NeoForge・バージョン 1.0.1・[English](README.md)
+Minecraft 1.21.1 / NeoForge・バージョン 1.1.0・[English](README.md)
 
 ![オリジン選択画面](docs/images/origin_select.png)
 
@@ -48,6 +50,10 @@ Minecraft 1.21.1 / NeoForge・バージョン 1.0.1・[English](README.md)
 
 \* エア・ライト・サウンドは、他の Cobblemon 系 MOD が追加するタイプです。それらの MOD を入れている場合にだけ表示されます。
 
+## アイコン
+
+オリジンには専用のアイコン「トレーナーの紋章」（赤白の帽子をかぶったボール）を使っています。`/give @s super_pallet_towner:trainer_emblem` でアイテムとして入手することもできます。
+
 ## HUD
 
 画面の隅の小さな HUD に、共鳴中のタイプとリンクが表示されます。位置と大きさは NeoOrigins の HUD 編集画面で変えられます。新しいタイプのポップイン、リンク発動時に広がるリング、リンクを流れる光などのアニメーションがあり、HUD 編集画面でオフにできます。
@@ -63,12 +69,11 @@ Minecraft 1.21.1 / NeoForge・バージョン 1.0.1・[English](README.md)
 | NeoForge（Minecraft 1.21.1） | 21.1.251 |
 | Cobblemon | 1.8.1 |
 | NeoOrigins | 2.2.29 |
-| Cobblemon: Mega Showdown | 1.2.0（オリジンのアイコンにサトシの帽子を使用） |
 
 ## 導入
 
 1. ワールドをバックアップします。
-2. [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) から `super_pallet_towner-1.0.1.jar` をダウンロードし、`mods` に入れます。
+2. [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) から `super_pallet_towner-1.1.0.jar` をダウンロードし、`mods` に入れます。
 3. ゲームを起動し、オリジン選択画面で「超マサラ人」を選びます。ビーストテイマーを選んでいたプレイヤーは、自動で超マサラ人に移ります。
 4. 操作設定で「タイプ共鳴を開く」にキーを割り当てます。
 
@@ -88,4 +93,4 @@ Java 21 が必要です。Cobblemon 1.8.1 と NeoOrigins 2.2.29 の jar を `lib
 
 ## ライセンス
 
-MIT。非公式のファン制作物で、Cobblemon・NeoOrigins・Mega Showdown の開発者による承認は受けていません。これらの MOD の素材は含んでいません。詳しくは [THIRD_PARTY.md](THIRD_PARTY.md) を見てください。
+MIT。非公式のファン制作物で、Cobblemon・NeoOrigins の開発者による承認は受けていません。これらの MOD の素材は含んでいません。詳しくは [THIRD_PARTY.md](THIRD_PARTY.md) を見てください。

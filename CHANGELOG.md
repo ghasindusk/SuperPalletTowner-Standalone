@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0 — 2026-10-08
+
+- New Origin icon: the Trainer Emblem, a capture ball wearing a red-and-white cap (its own item, `super_pallet_towner:trainer_emblem`).
+- Cobblemon: Mega Showdown is no longer required. It was only needed for the old cap icon.
+- The mod list shows the new logo.
+- README screenshots are now in English.
+
 ## 1.0.1 — 2026-10-05
 
 - Mod metadata: author (ghasindusk), project page and issue tracker links, shown in the in-game mod list.

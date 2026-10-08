@@ -286,5 +286,6 @@
   "ui.super_pallet_towner.neo_hud_hint": "枠をドラッグして移動 / ＋・−でサイズ変更",
   "ui.super_pallet_towner.neo_hud_sample": "現在の共鳴がないため見本を表示中",
   "ui.super_pallet_towner.hud_animations_on": "アニメーション：オン",
-  "ui.super_pallet_towner.hud_animations_off": "アニメーション：オフ"
+  "ui.super_pallet_towner.hud_animations_off": "アニメーション：オフ",
+  "item.super_pallet_towner.trainer_emblem": "トレーナーの紋章"
 }

@@ -34,6 +34,8 @@ def validate() -> tuple[int, str]:
             "data/starlight/origins/origins/super_pallet_towner.json",
             "assets/starlight/lang/ja_jp.json",
             "assets/starlight/lang/en_us.json",
+            "super_pallet_towner_logo.png",
+            "assets/super_pallet_towner/textures/item/trainer_emblem.png",
         }
         assert expected <= names, expected - names
         assert not any("dragonborn" in name.lower() for name in names)
@@ -44,13 +46,13 @@ def validate() -> tuple[int, str]:
         assert layer["origins"].count("starlight:super_pallet_towner") == 1
         assert "neoorigins:monster_tamer" not in layer["origins"]
         origin = json.loads(archive.read("data/starlight/origins/origins/super_pallet_towner.json"))
-        assert origin["icon"] == "mega_showdown:ash_cap"
+        assert origin["icon"] == "super_pallet_towner:trainer_emblem"
         assert len(origin["powers"]) == 5
         meta = tomllib.loads(archive.read("META-INF/neoforge.mods.toml").decode("utf-8"))
         assert meta["mods"][0]["modId"] == "super_pallet_towner"
         assert meta["mods"][0]["version"] == VERSION
         dependencies = {entry["modId"]: entry for entry in meta["dependencies"]["super_pallet_towner"]}
-        assert {"minecraft", "neoforge", "cobblemon", "neoorigins", "mega_showdown"} == set(dependencies)
+        assert {"minecraft", "neoforge", "cobblemon", "neoorigins"} == set(dependencies)
         assert all(entry["type"] == "required" for entry in dependencies.values())
     suites = [ET.parse(path).getroot() for path in (ROOT / "build" / "test-results" / "test").glob("TEST-*.xml")]
     tests = sum(int(suite.attrib["tests"]) for suite in suites)
@@ -69,7 +71,7 @@ def main() -> None:
 - Jar SHA-256: `{jar_hash}`.
 - One Jar contains the NeoOrigins primary layer, the Super Pallet Towner Origin, five power descriptions, Japanese and English language entries, and an MIT LICENSE.
 - No Dragonborn suborigin layer or `dragonborn_path` payload is present.
-- NeoForge metadata requires Cobblemon, NeoOrigins and Mega Showdown.
+- NeoForge metadata requires Cobblemon and NeoOrigins.
 """
     (ROOT / "RELEASE_REPORT.md").write_text(report, encoding="utf-8")
     with zipfile.ZipFile(DIST / f"Super_Pallet_Towner_Standalone_{VERSION}.zip", "w", zipfile.ZIP_DEFLATED) as bundle:

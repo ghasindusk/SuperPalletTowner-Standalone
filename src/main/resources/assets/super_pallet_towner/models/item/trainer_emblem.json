@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "super_pallet_towner:item/trainer_emblem"
+  }
+}

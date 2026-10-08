@@ -286,5 +286,6 @@
   "ui.super_pallet_towner.neo_hud_hint": "Drag the frame to move / use + and − to resize",
   "ui.super_pallet_towner.neo_hud_sample": "Showing sample types because none are resonating",
   "ui.super_pallet_towner.hud_animations_on": "Animations: On",
-  "ui.super_pallet_towner.hud_animations_off": "Animations: Off"
+  "ui.super_pallet_towner.hud_animations_off": "Animations: Off",
+  "item.super_pallet_towner.trainer_emblem": "Trainer Emblem"
 }

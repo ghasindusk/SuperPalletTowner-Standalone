@@ -9,6 +9,7 @@ import com.cyberday1.neoorigins.network.NeoOriginsNetwork;
 import com.cyberday1.neoorigins.data.OriginDataManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -17,6 +18,8 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.registries.DeferredItem;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -27,8 +30,12 @@ public final class SuperPalletTowner {
     static final ResourceLocation ORIGIN_LAYER = ResourceLocation.fromNamespaceAndPath("neoorigins", "origin");
     static final ResourceLocation TRAINER_ORIGIN = ResourceLocation.fromNamespaceAndPath("starlight", "super_pallet_towner");
     private static final ResourceLocation LEGACY_ORIGIN = ResourceLocation.fromNamespaceAndPath("neoorigins", "monster_tamer");
+    private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MOD_ID);
+    /** Icon of the Origin in the selection screen; also obtainable with /give. */
+    public static final DeferredItem<Item> TRAINER_EMBLEM = ITEMS.registerSimpleItem("trainer_emblem", new Item.Properties().stacksTo(1));
 
     public SuperPalletTowner(IEventBus modBus, ModContainer container) {
+        ITEMS.register(modBus);
         modBus.addListener(AffinityPackets::register);
         modBus.addListener(TrainerProgression::setup);
         if (FMLEnvironment.dist == Dist.CLIENT) {
