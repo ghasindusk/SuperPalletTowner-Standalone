@@ -13,7 +13,7 @@ import zipfile
 
 
 ROOT = Path(__file__).resolve().parent
-NEO_JAR = ROOT / "libs" / "neoorigins-2.2.29+1.21.1.jar"
+NEO_JAR = ROOT / "libs" / "neoorigins-2.2.30+1.21.1.jar"
 OUT = ROOT / "src" / "main" / "resources"
 LAYER = "data/neoorigins/origins/origin_layers/origin.json"
 ICON = "super_pallet_towner:trainer_emblem"

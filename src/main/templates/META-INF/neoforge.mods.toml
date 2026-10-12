@@ -102,6 +102,6 @@ config="${mod_id}.mixins.json"
 [[dependencies.${mod_id}]]
     modId="neoorigins"
     type="required"
-    versionRange="[2.2.29,2.2.30)"
+    versionRange="[2.2.29,2.2.31)"
     ordering="AFTER"
     side="BOTH"

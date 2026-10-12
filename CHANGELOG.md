@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.2 — 2026-10-12
+
+- Supports NeoOrigins 2.2.30 (2.2.29 still works). Built against 2.2.30; its main Origin list is unchanged from 2.2.29, so the embedded Origin data is the same.
+- Supports Cobblemon 1.8.2 (1.8.1 still works). Built against 1.8.2.
+
 ## 1.1.1 — 2026-10-09
 
 - Fixed a crash on dedicated servers: the mod failed to load while registering network handlers.

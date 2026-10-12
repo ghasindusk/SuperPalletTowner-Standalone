@@ -1,6 +1,8 @@
 .gradle/
 build/
 libs/
+libs_previous/
+downloads_cobblemon_*/
 run/
 .claude/
 verification/harness/build/
@@ -19,5 +21,6 @@ STATUS.md
 TODO.md
 MODRINTH_DRAFT.md
 RELEASE_REPORT.md
+CLAUDE_HANDOFF_*.md
 verification_local/
 docs/curseforge/SUBMISSION.md

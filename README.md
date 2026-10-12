@@ -4,7 +4,7 @@
 
 **A NeoOrigins add-on for Cobblemon.** It replaces NeoOrigins' Monster Tamer with an Origin built for the Cobblemon world. Its abilities work right away: pick up to three types from your party Pokémon, and you and your Pokémon share their power.
 
-Minecraft 1.21.1 / NeoForge · Version 1.1.1 · [日本語の説明はこちら](README_JA.md)
+Minecraft 1.21.1 / NeoForge · Version 1.1.2 · [日本語の説明はこちら](README_JA.md)
 
 ![Origin selection](docs/images/origin_select.png)
 
@@ -67,13 +67,13 @@ Install on both client and server.
 | Mod | Tested version |
 |---|---|
 | NeoForge (Minecraft 1.21.1) | 21.1.251 |
-| Cobblemon | 1.8.1 |
-| NeoOrigins | 2.2.29 |
+| Cobblemon | 1.8.1 – 1.8.2 |
+| NeoOrigins | 2.2.29 – 2.2.30 |
 
 ## Installation
 
 1. Back up your world.
-2. Download `super_pallet_towner-1.1.1.jar` from [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) and put it in `mods`.
+2. Download `super_pallet_towner-1.1.2.jar` from [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) and put it in `mods`.
 3. Start the game and choose **Super Pallet Towner** on the Origin screen. Players who chose Monster Tamer are moved to Super Pallet Towner automatically.
 4. Set a key for **Open Pokémon Affinity** in Controls.
 
@@ -84,14 +84,14 @@ The Origin data is inside the Jar, so no separate data pack is needed. This add-
 - Automated tests: 162 passed.
 - Checked in game: the Origin screen, the Pokémon Affinity screen and the HUD.
 - Also tested with only the required mods (NeoForge, Cobblemon with Kotlin for Forge, NeoOrigins): loads with no errors.
-- Tested on a dedicated server (1.1.1 fixes a server crash in earlier versions).
+- Tested on a dedicated server (the server crash from versions before 1.1.1 remains fixed).
 - Not yet tested with other add-ons that replace the NeoOrigins Origin list.
 
 Please report problems in [Issues](https://github.com/ghasindusk/SuperPalletTowner-Standalone/issues).
 
 ## Building
 
-Requires Java 21. Put the Cobblemon 1.8.1 and NeoOrigins 2.2.29 Jars in `libs/` (used only to compile; they are not bundled), then run `gradlew build`.
+Requires Java 21. Put the Cobblemon 1.8.2 and NeoOrigins 2.2.30 Jars in `libs/` (used only to compile; they are not bundled), then run `gradlew build`.
 
 ## License
 
