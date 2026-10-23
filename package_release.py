@@ -53,7 +53,11 @@ def validate() -> tuple[int, str]:
         assert meta["mods"][0]["version"] == VERSION
         dependencies = {entry["modId"]: entry for entry in meta["dependencies"]["super_pallet_towner"]}
         assert {"minecraft", "neoforge", "cobblemon", "neoorigins"} == set(dependencies)
-        assert all(entry["type"] == "required" for entry in dependencies.values())
+        # Since 1.2.0 NeoOrigins is optional, but its tested version range is still enforced when present.
+        assert all(dependencies[m]["type"] == "required" for m in ("minecraft", "neoforge", "cobblemon"))
+        assert dependencies["neoorigins"]["type"] == "optional"
+        assert dependencies["neoorigins"]["versionRange"].startswith("[2.2.29,")
+        assert {"starlight/trainer/TrainerSettings.class", "starlight/trainer/NeoOriginsBridge.class"} <= names
     suites = [ET.parse(path).getroot() for path in (ROOT / "build" / "test-results" / "test").glob("TEST-*.xml")]
     tests = sum(int(suite.attrib["tests"]) for suite in suites)
     failures = sum(int(suite.attrib["failures"]) + int(suite.attrib["errors"]) for suite in suites)
@@ -71,7 +75,7 @@ def main() -> None:
 - Jar SHA-256: `{jar_hash}`.
 - One Jar contains the NeoOrigins primary layer, the Super Pallet Towner Origin, five power descriptions, Japanese and English language entries, and an MIT LICENSE.
 - No Dragonborn suborigin layer or `dragonborn_path` payload is present.
-- NeoForge metadata requires Cobblemon and NeoOrigins.
+- NeoForge metadata requires Cobblemon; NeoOrigins is optional (2.2.29 – 2.2.30 when installed).
 """
     (ROOT / "RELEASE_REPORT.md").write_text(report, encoding="utf-8")
     with zipfile.ZipFile(DIST / f"Super_Pallet_Towner_Standalone_{VERSION}.zip", "w", zipfile.ZIP_DEFLATED) as bundle:

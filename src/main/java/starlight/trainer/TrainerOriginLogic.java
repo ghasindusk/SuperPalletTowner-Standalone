@@ -1,9 +1,10 @@
 package starlight.trainer;
 
 /**
- * Origin validation logic for Super Pallet Towner (trainer) powers.
+ * Who counts as a Super Pallet Towner (trainer).
  *
- * <p>Only the primary {@code neoorigins:origin} layer may enable this add-on.
+ * <p>With NeoOrigins installed, only the primary {@code neoorigins:origin} layer may enable this
+ * add-on. Without NeoOrigins, the {@code allPlayersWithoutNeoOrigins} setting decides for everyone.
  *
  * <p>Uses String IDs so this logic can be unit-tested without loading Minecraft runtime classes.
  */
@@ -14,5 +15,9 @@ public final class TrainerOriginLogic {
 
     public static boolean isTrainer(String primary) {
         return TRAINER_ORIGIN_ID.equals(primary);
+    }
+
+    public static boolean isTrainer(boolean originsLoaded, String primary, boolean allPlayersWithoutOrigins) {
+        return originsLoaded ? isTrainer(primary) : allPlayersWithoutOrigins;
     }
 }

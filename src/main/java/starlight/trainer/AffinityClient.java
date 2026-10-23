@@ -8,7 +8,6 @@ import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
-import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.client.gui.VanillaGuiLayers;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -28,7 +27,6 @@ public final class AffinityClient {
         modBus.addListener(AffinityClient::registerLayers);
         NeoForge.EVENT_BUS.addListener(AffinityClient::onClientTick);
         NeoForge.EVENT_BUS.addListener(AffinityClient::onLoggingOut);
-        NeoForge.EVENT_BUS.addListener(AffinityClient::onScreenInit);
     }
 
     private static void registerKeys(RegisterKeyMappingsEvent event) {
@@ -42,20 +40,6 @@ public final class AffinityClient {
     private static void onLoggingOut(ClientPlayerNetworkEvent.LoggingOut event) {
         AffinityHud.clear();
         ResonanceLinkEffects.setClient(java.util.Set.of());
-    }
-
-    /** Adds a path from NeoOrigins' existing HUD editor to the resonance HUD editor. */
-    private static void onScreenInit(ScreenEvent.Init.Post event) {
-        if (!(event.getScreen() instanceof com.cyberday1.neoorigins.client.ResourceHudEditorScreen screen)) return;
-        int x = Math.max(4, screen.width - 100);
-        int y = screen.width >= 425 ? 6 : 30;
-        event.addListener(net.minecraft.client.gui.components.Button.builder(
-                net.minecraft.network.chat.Component.translatable("ui.super_pallet_towner.neo_hud_button"),
-                button -> {
-                    // NeoOrigins persists its own changed HUD positions in onClose().
-                    screen.onClose();
-                    Minecraft.getInstance().setScreen(new AffinityHudEditorScreen());
-                }).bounds(x, y, 96, 20).build());
     }
 
     private static void onClientTick(ClientTickEvent.Post event) {

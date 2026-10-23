@@ -19,4 +19,17 @@ class TrainerOriginLogicTest {
         assertFalse(TrainerOriginLogic.isTrainer(PRIMARY_HUMAN));
         assertFalse(TrainerOriginLogic.isTrainer(null));
     }
+
+    @Test
+    void withNeoOriginsOnlyTheOriginCounts() {
+        assertTrue(TrainerOriginLogic.isTrainer(true, PRIMARY_TRAINER, false));
+        assertFalse(TrainerOriginLogic.isTrainer(true, PRIMARY_HUMAN, true));
+        assertFalse(TrainerOriginLogic.isTrainer(true, null, true));
+    }
+
+    @Test
+    void withoutNeoOriginsTheSettingDecides() {
+        assertTrue(TrainerOriginLogic.isTrainer(false, null, true));
+        assertFalse(TrainerOriginLogic.isTrainer(false, null, false));
+    }
 }

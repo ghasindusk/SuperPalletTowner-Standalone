@@ -2,9 +2,12 @@
 
 # Super Pallet Towner (超マサラ人)
 
-**A NeoOrigins add-on for Cobblemon.** It replaces NeoOrigins' Monster Tamer with an Origin built for the Cobblemon world. Its abilities work right away: pick up to three types from your party Pokémon, and you and your Pokémon share their power.
+**A Cobblemon add-on.** Pick up to three types from your party Pokémon, and you and your Pokémon share their power.
 
-Minecraft 1.21.1 / NeoForge · Version 1.1.2 · [日本語の説明はこちら](README_JA.md)
+- **Cobblemon only:** every player gets the abilities below. NeoOrigins is not needed.
+- **With NeoOrigins:** it becomes the Super Pallet Towner Origin, replacing NeoOrigins' Monster Tamer. Players who choose it get the abilities.
+
+Minecraft 1.21.1 / NeoForge · Version 1.2.0 · [日本語の説明はこちら](README_JA.md)
 
 ![Origin selection](docs/images/origin_select.png)
 
@@ -56,7 +59,7 @@ The Origin uses its own icon, the **Trainer Emblem**: a capture ball wearing a r
 
 ## HUD
 
-A small HUD shows your active types and links. Move and resize it in the NeoOrigins HUD editor. New types pop in, a ring bursts when a link activates, and light flows along the links. You can turn the animations off in the HUD editor.
+A small HUD shows your active types and links. Move and resize it on the **HUD** tab of the Pokémon Affinity screen (with NeoOrigins, also from its HUD editor). New types pop in, a ring bursts when a link activates, and light flows along the links. You can turn the animations off in the client config (`hudAnimations`) or, with NeoOrigins, in the HUD editor.
 
 ![HUD](docs/images/hud.png)
 
@@ -68,22 +71,31 @@ Install on both client and server.
 |---|---|
 | NeoForge (Minecraft 1.21.1) | 21.1.251 |
 | Cobblemon | 1.8.1 – 1.8.2 |
-| NeoOrigins | 2.2.29 – 2.2.30 |
+| NeoOrigins (optional) | 2.2.29 – 2.2.30 |
+
+Kotlin for Forge is required by Cobblemon. If you install NeoOrigins, it must be one of the tested versions above, because this add-on replaces its main Origin list.
 
 ## Installation
 
 1. Back up your world.
-2. Download `super_pallet_towner-1.1.2.jar` from [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) and put it in `mods`.
-3. Start the game and choose **Super Pallet Towner** on the Origin screen. Players who chose Monster Tamer are moved to Super Pallet Towner automatically.
-4. Set a key for **Open Pokémon Affinity** in Controls.
+2. Download `super_pallet_towner-1.2.0.jar` from [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) and put it in `mods`.
+3. Set a key for **Open Pokémon Affinity** in Controls.
+4. With NeoOrigins only: choose **Super Pallet Towner** on the Origin screen. Players who chose Monster Tamer are moved to Super Pallet Towner automatically.
+
+### Without NeoOrigins
+
+Every player is a Super Pallet Towner. To switch the add-on off for everyone, set `allPlayersWithoutNeoOrigins = false` in `config/super_pallet_towner-common.toml`. One ability depends on NeoOrigins and does nothing without it: the Psychic type's shorter Origin power cooldowns.
+
+### With NeoOrigins
 
 The Origin data is inside the Jar, so no separate data pack is needed. This add-on replaces NeoOrigins' main Origin list to swap out Monster Tamer. Other add-ons that replace the same list may conflict.
 
 ## Status
 
-- Automated tests: 162 passed.
+- Automated tests: 166 passed (including a check that only the NeoOrigins bridge classes refer to NeoOrigins).
 - Checked in game: the Origin screen, the Pokémon Affinity screen and the HUD.
-- Also tested with only the required mods (NeoForge, Cobblemon with Kotlin for Forge, NeoOrigins): loads with no errors.
+- 1.2.0 without NeoOrigins (NeoForge, Cobblemon, Kotlin for Forge only): the dedicated server starts and stops with no errors, and in game the Pokémon Affinity screen opens, resonance slots become active and the HUD shows.
+- 1.2.0 with NeoOrigins 2.2.30: the dedicated server starts with no errors and loads the Origin.
 - Tested on a dedicated server (the server crash from versions before 1.1.1 remains fixed).
 - Not yet tested with other add-ons that replace the NeoOrigins Origin list.
 
@@ -91,7 +103,7 @@ Please report problems in [Issues](https://github.com/ghasindusk/SuperPalletTown
 
 ## Building
 
-Requires Java 21. Put the Cobblemon 1.8.2 and NeoOrigins 2.2.30 Jars in `libs/` (used only to compile; they are not bundled), then run `gradlew build`.
+Requires Java 21. Put the Cobblemon 1.8.2 and NeoOrigins 2.2.30 Jars in `libs/` (used only to compile; they are not bundled, and NeoOrigins stays optional at runtime), then run `gradlew build`.
 
 ## License
 

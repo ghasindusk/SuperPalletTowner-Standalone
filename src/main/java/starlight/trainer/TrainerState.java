@@ -2,7 +2,6 @@ package starlight.trainer;
 
 import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.pokemon.Pokemon;
-import com.cyberday1.neoorigins.attachment.OriginAttachments;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.nbt.CompoundTag;
@@ -66,9 +65,9 @@ public final class TrainerState {
     }
 
     public static boolean isTrainer(ServerPlayer player) {
-        var data = player.getData(OriginAttachments.originData());
-        ResourceLocation primary = data.getOrigin(SuperPalletTowner.ORIGIN_LAYER);
-        return TrainerOriginLogic.isTrainer(primary == null ? null : primary.toString());
+        boolean origins = OriginsCompat.loaded();
+        return TrainerOriginLogic.isTrainer(origins, origins ? NeoOriginsBridge.primaryOrigin(player) : null,
+                TrainerSettings.allPlayersWithoutOrigins());
     }
 
     public static List<String> selected(ServerPlayer player) {

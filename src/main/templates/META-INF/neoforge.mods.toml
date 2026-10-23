@@ -46,7 +46,7 @@ authors="ghasindusk"
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-Adds the Super Pallet Towner Origin and Cobblemon party-based Affinity mechanics.
+Cobblemon party-based Type Resonance for players. Works with Cobblemon alone; with NeoOrigins it becomes the Super Pallet Towner Origin.
 '''
 
 # The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
@@ -99,9 +99,11 @@ config="${mod_id}.mixins.json"
     ordering="AFTER"
     side="BOTH"
 
+# Optional since 1.2.0: without NeoOrigins every player is a Super Pallet Towner (see super_pallet_towner-common.toml).
+# When NeoOrigins IS installed it must be a tested version, because this mod replaces the main Origin layer.
 [[dependencies.${mod_id}]]
     modId="neoorigins"
-    type="required"
+    type="optional"
     versionRange="[2.2.29,2.2.31)"
     ordering="AFTER"
     side="BOTH"

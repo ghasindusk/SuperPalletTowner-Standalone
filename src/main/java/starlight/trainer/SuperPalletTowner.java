@@ -3,10 +3,6 @@ package starlight.trainer;
 import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.api.storage.party.PlayerPartyStore;
 import com.cobblemon.mod.common.pokemon.Pokemon;
-import com.cyberday1.neoorigins.attachment.OriginAttachments;
-import com.cyberday1.neoorigins.service.ActiveOriginService;
-import com.cyberday1.neoorigins.network.NeoOriginsNetwork;
-import com.cyberday1.neoorigins.data.OriginDataManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.Item;
@@ -29,19 +25,20 @@ public final class SuperPalletTowner {
     public static final String MOD_ID = "super_pallet_towner";
     static final ResourceLocation ORIGIN_LAYER = ResourceLocation.fromNamespaceAndPath("neoorigins", "origin");
     static final ResourceLocation TRAINER_ORIGIN = ResourceLocation.fromNamespaceAndPath("starlight", "super_pallet_towner");
-    private static final ResourceLocation LEGACY_ORIGIN = ResourceLocation.fromNamespaceAndPath("neoorigins", "monster_tamer");
     private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(MOD_ID);
     /** Icon of the Origin in the selection screen; also obtainable with /give. */
     public static final DeferredItem<Item> TRAINER_EMBLEM = ITEMS.registerSimpleItem("trainer_emblem", new Item.Properties().stacksTo(1));
 
     public SuperPalletTowner(IEventBus modBus, ModContainer container) {
         ITEMS.register(modBus);
+        TrainerSettings.register(container, modBus);
         modBus.addListener(AffinityPackets::register);
         modBus.addListener(TrainerProgression::setup);
         if (FMLEnvironment.dist == Dist.CLIENT) {
             // Client-only HUD size/position (config/super_pallet_towner-client.toml).
             HudSettings.register(container, modBus);
             AffinityClient.init(modBus);
+            if (OriginsCompat.loaded()) NeoOriginsClientBridge.init();
         }
         NeoForge.EVENT_BUS.addListener(this::onPlayerTick);
         NeoForge.EVENT_BUS.addListener(this::onPlayerClone);
@@ -71,7 +68,7 @@ public final class SuperPalletTowner {
             PokemonNaturalRecovery.forget(oldPlayer);
             PlayerAffinityEvents.forget(oldPlayer);
             EquipmentDurabilityEffects.forget(oldPlayer);
-            OriginCooldownAffinity.forget(oldPlayer);
+            if (OriginsCompat.loaded()) OriginCooldownAffinity.forget(oldPlayer);
         }
     }
 
@@ -82,7 +79,7 @@ public final class SuperPalletTowner {
             PokemonNaturalRecovery.forget(player);
             PlayerAffinityEvents.forget(player);
             EquipmentDurabilityEffects.forget(player);
-            OriginCooldownAffinity.forget(player);
+            if (OriginsCompat.loaded()) OriginCooldownAffinity.forget(player);
             TrainerProgression.forget(player);
             AffinityPackets.forget(player);
         }
@@ -94,13 +91,13 @@ public final class SuperPalletTowner {
         NaturalAffinityEffects.tick(player);
         PokemonNaturalRecovery.tick(player);
         EquipmentDurabilityEffects.tick(player);
-        OriginCooldownAffinity.tick(player);
+        if (OriginsCompat.loaded()) OriginCooldownAffinity.tick(player);
         PlayerAffinityEffects.tick(player);
         ResonanceLinkEffects.tick(player);
         ResonanceWorldEffects.tick(player);
         PokemonWorldAffinityEffects.update(player, TrainerState.active(player));
         if (player.tickCount % 20 != 0) return;
-        migrateLegacyOrigin(player);
+        if (OriginsCompat.loaded()) NeoOriginsBridge.migrateLegacyOrigin(player);
         if (!TrainerState.isTrainer(player)) {
             AffinityPackets.syncLinks(player, Set.of());
             PlayerAffinityEffects.update(player, Set.of());
@@ -129,17 +126,6 @@ public final class SuperPalletTowner {
         AffinityPackets.syncActive(player, active);
         ResonanceLinkEffects.updatePlayer(player, active);
         TrainerState.update(player, eligible, partyCount, consciousCount);
-    }
-
-    /** Replace only the Origin layer while keeping Class, evolution and other attached data. */
-    private static void migrateLegacyOrigin(ServerPlayer player) {
-        var data = player.getData(OriginAttachments.originData());
-        if (!LEGACY_ORIGIN.equals(data.getOrigin(ORIGIN_LAYER))) return;
-        if (OriginDataManager.INSTANCE.getOrigin(TRAINER_ORIGIN) == null) return;
-        data.setOrigin(ORIGIN_LAYER, TRAINER_ORIGIN);
-        ActiveOriginService.applyOriginPowers(player, ORIGIN_LAYER, LEGACY_ORIGIN, TRAINER_ORIGIN);
-        ActiveOriginService.invalidate(player.getUUID());
-        NeoOriginsNetwork.syncToPlayer(player);
     }
 
 }

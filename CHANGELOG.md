@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0 — 2026-10-23
+
+- **NeoOrigins is now optional.** With only Cobblemon (and Kotlin for Forge), every player is a Super Pallet Towner. Turn this off with `allPlayersWithoutNeoOrigins` in the new `config/super_pallet_towner-common.toml`.
+- With NeoOrigins installed nothing changes: you become a Super Pallet Towner by choosing the Origin, and NeoOrigins must still be 2.2.29 – 2.2.30.
+- Without NeoOrigins, the Psychic type's shorter Origin power cooldowns have nothing to shorten, so that bonus does nothing.
+- Code: all NeoOrigins calls moved into bridge classes that load only when NeoOrigins is present; a new test checks that no other class refers to NeoOrigins.
+
 ## 1.1.2 — 2026-10-12
 
 - Supports NeoOrigins 2.2.30 (2.2.29 still works). Built against 2.2.30; its main Origin list is unchanged from 2.2.29, so the embedded Origin data is the same.

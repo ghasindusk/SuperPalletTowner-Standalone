@@ -2,9 +2,12 @@
 
 # 超マサラ人（Super Pallet Towner）
 
-**Cobblemon 向けの NeoOrigins アドオンです。** NeoOrigins のビーストテイマー（Monster Tamer）を、Cobblemon の世界観に合わせたオリジン「超マサラ人」に置き換えます。能力はすぐに使えます。手持ちポケモンのタイプから最大3つを選ぶと、トレーナーとポケモンが互いに力を分け合います。
+**Cobblemon 向けのアドオンです。** 手持ちポケモンのタイプから最大3つを選ぶと、トレーナーとポケモンが互いに力を分け合います。
 
-Minecraft 1.21.1 / NeoForge・バージョン 1.1.2・[English](README.md)
+- **Cobblemon だけで遊ぶ場合：** すべてのプレイヤーが下の能力を使えます。NeoOrigins は必要ありません。
+- **NeoOrigins も入れる場合：** NeoOrigins のビーストテイマー（Monster Tamer）を置き換えるオリジン「超マサラ人」になります。このオリジンを選んだプレイヤーが能力を使えます。
+
+Minecraft 1.21.1 / NeoForge・バージョン 1.2.0・[English](README.md)
 
 ![オリジン選択画面](docs/images/origin_select.png)
 
@@ -56,7 +59,7 @@ Minecraft 1.21.1 / NeoForge・バージョン 1.1.2・[English](README.md)
 
 ## HUD
 
-画面の隅の小さな HUD に、共鳴中のタイプとリンクが表示されます。位置と大きさは NeoOrigins の HUD 編集画面で変えられます。新しいタイプのポップイン、リンク発動時に広がるリング、リンクを流れる光などのアニメーションがあり、HUD 編集画面でオフにできます。
+画面の隅の小さな HUD に、共鳴中のタイプとリンクが表示されます。位置と大きさはタイプ共鳴画面の「HUD」タブで変えられます（NeoOrigins がある場合は、その HUD 編集画面からも変えられます）。新しいタイプのポップイン、リンク発動時に広がるリング、リンクを流れる光などのアニメーションがあり、クライアント設定（`hudAnimations`）、または NeoOrigins がある場合は HUD 編集画面でオフにできます。
 
 ![HUD](docs/images/hud.png)
 
@@ -68,22 +71,31 @@ Minecraft 1.21.1 / NeoForge・バージョン 1.1.2・[English](README.md)
 |---|---|
 | NeoForge（Minecraft 1.21.1） | 21.1.251 |
 | Cobblemon | 1.8.1 – 1.8.2 |
-| NeoOrigins | 2.2.29 – 2.2.30 |
+| NeoOrigins（任意） | 2.2.29 – 2.2.30 |
+
+Kotlin for Forge は Cobblemon に必要です。NeoOrigins を入れる場合は上の確認済みの版にしてください。この MOD は NeoOrigins のメインのオリジン一覧を置き換えるためです。
 
 ## 導入
 
 1. ワールドをバックアップします。
-2. [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) から `super_pallet_towner-1.1.2.jar` をダウンロードし、`mods` に入れます。
-3. ゲームを起動し、オリジン選択画面で「超マサラ人」を選びます。ビーストテイマーを選んでいたプレイヤーは、自動で超マサラ人に移ります。
-4. 操作設定で「タイプ共鳴を開く」にキーを割り当てます。
+2. [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) から `super_pallet_towner-1.2.0.jar` をダウンロードし、`mods` に入れます。
+3. 操作設定で「タイプ共鳴を開く」にキーを割り当てます。
+4. NeoOrigins がある場合のみ：オリジン選択画面で「超マサラ人」を選びます。ビーストテイマーを選んでいたプレイヤーは、自動で超マサラ人に移ります。
+
+### NeoOrigins なしの場合
+
+すべてのプレイヤーが超マサラ人になります。全員を対象外にしたいときは、`config/super_pallet_towner-common.toml` の `allPlayersWithoutNeoOrigins = false` にします。エスパータイプの「オリジン能力のクールダウン短縮」だけは NeoOrigins の能力が対象なので、NeoOrigins がないと効果がありません。
+
+### NeoOrigins ありの場合
 
 オリジンのデータは jar に入っているので、データパックは別に必要ありません。ビーストテイマーを置き換えるために NeoOrigins のメインのオリジン一覧を上書きしているため、同じ一覧を上書きする他のアドオンとは競合することがあります。
 
 ## 確認状況
 
-- 自動テスト：162件すべて成功
+- 自動テスト：166件すべて成功（NeoOrigins を参照するのが専用のクラスだけであることの確認を含む）
 - ゲーム内：オリジン選択画面、タイプ共鳴画面、HUD を確認済み
-- 前提 MOD だけの環境（NeoForge、Cobblemon と Kotlin for Forge、NeoOrigins）でも、エラーなしで動作を確認
+- 1.2.0 を NeoOrigins なし（NeoForge、Cobblemon、Kotlin for Forge だけ）で確認：専用サーバーがエラーなしで起動・停止。ゲーム内でタイプ共鳴画面が開き、スロットが有効になり、HUD が表示される
+- 1.2.0 を NeoOrigins 2.2.30 ありで確認：専用サーバーがエラーなしで起動し、オリジンを読み込む
 - 専用サーバーで動作確認済み（1.1.1より前の版にあったサーバークラッシュは修正済み）
 - NeoOrigins のオリジン一覧を上書きする他のアドオンとの併用は未確認
 
@@ -91,7 +103,7 @@ Minecraft 1.21.1 / NeoForge・バージョン 1.1.2・[English](README.md)
 
 ## ビルド
 
-Java 21 が必要です。Cobblemon 1.8.2 と NeoOrigins 2.2.30 の jar を `libs/` に置き（コンパイル時のみ使い、同梱はしません）、`gradlew build` を実行します。
+Java 21 が必要です。Cobblemon 1.8.2 と NeoOrigins 2.2.30 の jar を `libs/` に置き（コンパイル時のみ使い、同梱はしません。実行時の NeoOrigins は任意のままです）、`gradlew build` を実行します。
 
 ## ライセンス
 

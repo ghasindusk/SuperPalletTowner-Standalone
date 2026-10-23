@@ -1,6 +1,5 @@
 package starlight.trainer;
 
-import com.cyberday1.neoorigins.client.ResourceHudEditorScreen;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
@@ -8,8 +7,9 @@ import net.minecraft.network.chat.Component;
 
 import java.util.List;
 import java.util.Set;
+import java.util.function.Supplier;
 
-/** Drag-and-scale editor launched from NeoOrigins' HUD editor. */
+/** Drag-and-scale editor (opened from NeoOrigins' HUD editor when NeoOrigins is installed). */
 public final class AffinityHudEditorScreen extends Screen {
     private static final List<String> SAMPLE_TYPES = List.of("fire", "rock", "steel");
     private static final Set<String> NO_LINKS = Set.of();
@@ -20,9 +20,12 @@ public final class AffinityHudEditorScreen extends Screen {
     private double startCenterX;
     private double startCenterY;
     private boolean migratedLegacyPosition;
+    /** Screen to go back to when closing; null closes the editor. */
+    private final Supplier<Screen> back;
 
-    public AffinityHudEditorScreen() {
+    public AffinityHudEditorScreen(Supplier<Screen> back) {
         super(Component.translatable("ui.super_pallet_towner.neo_hud_title"));
+        this.back = back;
     }
 
     @Override
@@ -134,7 +137,7 @@ public final class AffinityHudEditorScreen extends Screen {
             dragging = false;
             HudSettings.saveCurrent();
         }
-        if (minecraft != null) minecraft.setScreen(new ResourceHudEditorScreen());
+        if (minecraft != null) minecraft.setScreen(back == null ? null : back.get());
     }
 
     @Override
