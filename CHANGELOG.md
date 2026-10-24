@@ -3,6 +3,7 @@
 ## 1.2.0 — 2026-10-23
 
 - **NeoOrigins is now optional.** With only Cobblemon (and Kotlin for Forge), every player is a Super Pallet Towner. Turn this off with `allPlayersWithoutNeoOrigins` in the new `config/super_pallet_towner-common.toml`.
+- The **Open Pokémon Affinity** key is now **Y** by default (it was unbound). Y is not used by Minecraft, Cobblemon or NeoOrigins. Existing players keep the key they set.
 - With NeoOrigins installed nothing changes: you become a Super Pallet Towner by choosing the Origin, and NeoOrigins must still be 2.2.29 – 2.2.30.
 - Without NeoOrigins, the Psychic type's shorter Origin power cooldowns have nothing to shorten, so that bonus does nothing.
 - Includes 1.1.3 (prepared on 2026-10-23 but not published): that version changed only the version number from 1.1.2.

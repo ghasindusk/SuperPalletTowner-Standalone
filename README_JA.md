@@ -25,7 +25,7 @@ Minecraft 1.21.1 / NeoForge・バージョン 1.2.0・[English](README.md)
 
 ## タイプ共鳴画面
 
-操作設定で「タイプ共鳴を開く」にキーを割り当てて開きます。タイプの選択、効果の確認、リンクの設定ができます。
+「タイプ共鳴を開く」キー（初期設定は **Y**。操作設定で変えられます）で開きます。タイプの選択、効果の確認、リンクの設定ができます。
 
 ![共鳴の効果](docs/images/resonance_effects.png)
 ![共鳴リンク](docs/images/resonance_links.png)
@@ -79,7 +79,7 @@ Kotlin for Forge は Cobblemon に必要です。NeoOrigins を入れる場合�
 
 1. ワールドをバックアップします。
 2. [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) から `super_pallet_towner-1.2.0.jar` をダウンロードし、`mods` に入れます。
-3. 操作設定で「タイプ共鳴を開く」にキーを割り当てます。
+3. **Y** キー（タイプ共鳴を開く）でタイプを選びます。キーは操作設定で変えられます。
 4. NeoOrigins がある場合のみ：オリジン選択画面で「超マサラ人」を選びます。ビーストテイマーを選んでいたプレイヤーは、自動で超マサラ人に移ります。
 
 ### NeoOrigins なしの場合

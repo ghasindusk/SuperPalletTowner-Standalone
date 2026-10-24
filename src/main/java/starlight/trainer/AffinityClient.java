@@ -17,7 +17,8 @@ import net.neoforged.neoforge.network.handling.IPayloadContext;
 public final class AffinityClient {
     private static final KeyMapping OPEN = new KeyMapping(
             "key.super_pallet_towner.open_affinity",
-            InputConstants.UNKNOWN.getValue(),
+            // Default Y (since 1.2.0): free in vanilla, Cobblemon and NeoOrigins. Players can rebind it in Controls.
+            InputConstants.KEY_Y,
             "key.categories.super_pallet_towner");
 
     private AffinityClient() {}

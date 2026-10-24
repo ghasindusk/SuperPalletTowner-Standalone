@@ -25,7 +25,7 @@ All bonuses have caps, so the Origin stays balanced with other mods.
 
 ## Pokémon Affinity screen
 
-Open it with the **Open Pokémon Affinity** key (set it in Controls). Choose the types, check every effect, and link types.
+Open it with the **Open Pokémon Affinity** key (**Y** by default; change it in Controls). Choose the types, check every effect, and link types.
 
 ![Resonance effects](docs/images/resonance_effects.png)
 ![Resonance links](docs/images/resonance_links.png)
@@ -79,7 +79,7 @@ Kotlin for Forge is required by Cobblemon. If you install NeoOrigins, it must be
 
 1. Back up your world.
 2. Download `super_pallet_towner-1.2.0.jar` from [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) and put it in `mods`.
-3. Set a key for **Open Pokémon Affinity** in Controls.
+3. Press **Y** (Open Pokémon Affinity) to choose your types. You can change the key in Controls.
 4. With NeoOrigins only: choose **Super Pallet Towner** on the Origin screen. Players who chose Monster Tamer are moved to Super Pallet Towner automatically.
 
 ### Without NeoOrigins
