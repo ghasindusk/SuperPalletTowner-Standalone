@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0 — 2026-10-25
+
+- **New: a Fabric edition** (`super_pallet_towner-fabric-1.3.0.jar`) for Minecraft 1.21.1 with Fabric Loader, Fabric API and Cobblemon 1.8.1 – 1.8.2. There is no NeoOrigins on Fabric, so every player is a Super Pallet Towner, as in the NeoForge edition without NeoOrigins. The same `config/super_pallet_towner-common.toml` switch turns it off for everyone.
+- The NeoForge Jar is now named `super_pallet_towner-neoforge-1.3.0.jar`. Its behaviour is unchanged from 1.2.0.
+- Fabric differences: the Psychic type's shorter Origin power cooldowns do nothing (there are no Origin powers), the HUD is drawn after the vanilla HUD instead of just above the hotbar, damage changes apply just before absorption hearts instead of just after, and the Ice + Water path asks vanilla's spawn-protection check instead of NeoForge's block-place event.
+- Code: the source is split into `common` (shared, compiled against plain Minecraft), `neoforge` and `fabric`. NeoForge events and Fabric callbacks/mixins call the same shared methods.
+
 ## 1.2.0 — 2026-10-23
 
 - **NeoOrigins is now optional.** With only Cobblemon (and Kotlin for Forge), every player is a Super Pallet Towner. Turn this off with `allPlayersWithoutNeoOrigins` in the new `config/super_pallet_towner-common.toml`.

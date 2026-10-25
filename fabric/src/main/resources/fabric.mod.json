@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "super_pallet_towner",
+  "version": "${version}",
+  "name": "Super Pallet Towner",
+  "description": "Cobblemon party-based Type Resonance for players. Fabric edition: every player gets it automatically with Cobblemon (no Origin mod needed).",
+  "authors": ["ghasindusk"],
+  "contact": {
+    "homepage": "https://github.com/ghasindusk/SuperPalletTowner-Standalone",
+    "sources": "https://github.com/ghasindusk/SuperPalletTowner-Standalone",
+    "issues": "https://github.com/ghasindusk/SuperPalletTowner-Standalone/issues"
+  },
+  "license": "MIT",
+  "icon": "super_pallet_towner_logo.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["starlight.trainer.SuperPalletTownerFabric"],
+    "client": ["starlight.trainer.SuperPalletTownerFabricClient"]
+  },
+  "mixins": [
+    "super_pallet_towner.shared.mixins.json",
+    "super_pallet_towner.fabric.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.9",
+    "fabric-api": ">=0.116.6",
+    "minecraft": "1.21.1",
+    "java": ">=21",
+    "cobblemon": ">=1.8.1 <1.9"
+  }
+}

@@ -5,9 +5,10 @@
 **A Cobblemon add-on.** Pick up to three types from your party Pokémon, and you and your Pokémon share their power.
 
 - **Cobblemon only:** every player gets the abilities below. NeoOrigins is not needed.
-- **With NeoOrigins:** it becomes the Super Pallet Towner Origin, replacing NeoOrigins' Monster Tamer. Players who choose it get the abilities.
+- **With NeoOrigins (NeoForge):** it becomes the Super Pallet Towner Origin, replacing NeoOrigins' Monster Tamer. Players who choose it get the abilities.
+- **Fabric:** a Fabric edition is available too. It works like the NeoForge edition without NeoOrigins: every player gets the abilities.
 
-Minecraft 1.21.1 / NeoForge · Version 1.2.0 · [日本語の説明はこちら](README_JA.md)
+Minecraft 1.21.1 / NeoForge or Fabric · Version 1.3.0 · [日本語の説明はこちら](README_JA.md)
 
 ![Origin selection](docs/images/origin_select.png)
 
@@ -65,26 +66,29 @@ A small HUD shows your active types and links. Move and resize it on the **HUD**
 
 ## Requirements
 
-Install on both client and server.
+Install on both client and server. Use the Jar for your loader.
 
-| Mod | Tested version |
-|---|---|
-| NeoForge (Minecraft 1.21.1) | 21.1.251 |
-| Cobblemon | 1.8.1 – 1.8.2 |
-| NeoOrigins (optional) | 2.2.29 – 2.2.30 |
+| | NeoForge edition | Fabric edition |
+|---|---|---|
+| Jar | `super_pallet_towner-neoforge-1.3.0.jar` | `super_pallet_towner-fabric-1.3.0.jar` |
+| Loader (Minecraft 1.21.1) | NeoForge 21.1.251 or newer 21.1.x | Fabric Loader 0.17.2 or newer + Fabric API 0.116.6 or newer |
+| Cobblemon | 1.8.1 – 1.8.2 (NeoForge) | 1.8.1 – 1.8.2 (Fabric) |
+| NeoOrigins | optional, 2.2.29 – 2.2.30 | not available |
 
-Kotlin for Forge is required by Cobblemon. If you install NeoOrigins, it must be one of the tested versions above, because this add-on replaces its main Origin list.
+On NeoForge, Kotlin for Forge is required by Cobblemon. If you install NeoOrigins, it must be one of the tested versions above, because this add-on replaces its main Origin list.
 
 ## Installation
 
 1. Back up your world.
-2. Download `super_pallet_towner-1.2.0.jar` from [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) and put it in `mods`.
+2. Download the Jar for your loader (`super_pallet_towner-neoforge-1.3.0.jar` or `super_pallet_towner-fabric-1.3.0.jar`) from [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) and put it in `mods`.
 3. Press **Y** (Open Pokémon Affinity) to choose your types. You can change the key in Controls.
 4. With NeoOrigins only: choose **Super Pallet Towner** on the Origin screen. Players who chose Monster Tamer are moved to Super Pallet Towner automatically.
 
-### Without NeoOrigins
+### Without NeoOrigins (and on Fabric)
 
 Every player is a Super Pallet Towner. To switch the add-on off for everyone, set `allPlayersWithoutNeoOrigins = false` in `config/super_pallet_towner-common.toml`. One ability depends on NeoOrigins and does nothing without it: the Psychic type's shorter Origin power cooldowns.
+
+On Fabric the HUD is drawn after the vanilla HUD rather than just above the hotbar.
 
 ### With NeoOrigins
 
@@ -92,18 +96,23 @@ The Origin data is inside the Jar, so no separate data pack is needed. This add-
 
 ## Status
 
-- Automated tests: 166 passed (including a check that only the NeoOrigins bridge classes refer to NeoOrigins).
+- Automated tests: 166 passed (including a check that only the NeoOrigins bridge classes refer to NeoOrigins). The release script also checks that the Fabric Jar refers to no NeoForge or NeoOrigins class.
 - Checked in game: the Origin screen, the Pokémon Affinity screen and the HUD.
 - 1.2.0 without NeoOrigins (NeoForge, Cobblemon, Kotlin for Forge only): the dedicated server starts and stops with no errors, and in game the Pokémon Affinity screen opens, resonance slots become active and the HUD shows.
 - 1.2.0 with NeoOrigins 2.2.30: the dedicated server starts with no errors and loads the Origin.
 - Tested on a dedicated server (the server crash from versions before 1.1.1 remains fixed).
+- 1.3.0 Fabric (Fabric Loader 0.17.2, Fabric API 0.116.7, Cobblemon 1.8.2): the dedicated server starts with no errors from this mod. In game: the Pokémon Affinity screen opens with Y, resonance slots become active, the HUD shows, the chosen types are kept after leaving and rejoining, Normal raises movement speed, Fire blocks fire damage, and Fairy shortens Poison.
+- 1.3.0 NeoForge: the dedicated server starts with and without NeoOrigins exactly as 1.2.0 did.
 - Not yet tested with other add-ons that replace the NeoOrigins Origin list.
 
 Please report problems in [Issues](https://github.com/ghasindusk/SuperPalletTowner-Standalone/issues).
 
 ## Building
 
-Requires Java 21. Put the Cobblemon 1.8.2 and NeoOrigins 2.2.30 Jars in `libs/` (used only to compile; they are not bundled, and NeoOrigins stays optional at runtime), then run `gradlew build`.
+Requires Java 21. The source has three parts: `common` (shared code, compiled against plain Minecraft so no loader API can slip in), `neoforge` and `fabric`.
+
+1. Put the NeoForge Cobblemon 1.8.2 and NeoOrigins 2.2.30 Jars in `libs/`, and the Fabric Cobblemon 1.8.2 Jar in `downloads_cobblemon_fabric_1.8.2/` (used only to compile; nothing is bundled, and NeoOrigins stays optional at runtime).
+2. Run `gradlew build`. The Jars are written to `neoforge/build/libs/` and `fabric/build/libs/`.
 
 ## License
 

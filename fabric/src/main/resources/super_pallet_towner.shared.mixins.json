@@ -1,0 +1,8 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "starlight.trainer.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": ["TypeIconMixin"],
+  "injectors": {"defaultRequire": 1}
+}
