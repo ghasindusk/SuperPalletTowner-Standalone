@@ -13,7 +13,7 @@ neoForge {
 }
 
 dependencies {
-    compileOnly files(rootProject.file('libs/Cobblemon-neoforge-1.8.2+1.21.1.jar'))
+    compileOnly files(rootProject.file("libs/Cobblemon-neoforge-${cobblemon_version}+1.21.1.jar"))
     compileOnly 'org.jetbrains.kotlin:kotlin-stdlib:2.2.0'
     compileOnly 'net.fabricmc:sponge-mixin:0.15.2+mixin.0.8.7'
     compileOnly 'io.github.llamalad7:mixinextras-common:0.4.1'

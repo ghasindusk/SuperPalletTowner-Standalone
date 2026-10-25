@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1 — 2026-10-25
+
+- Supports **Cobblemon 1.8.3** on both NeoForge and Fabric (1.8.1 and 1.8.2 still work). Both Jars are built and tested against 1.8.3; the Cobblemon parts this add-on uses are unchanged, so the game code is the same as 1.3.0.
+
 ## 1.3.0 — 2026-10-25
 
 - **New: a Fabric edition** (`super_pallet_towner-fabric-1.3.0.jar`) for Minecraft 1.21.1 with Fabric Loader, Fabric API and Cobblemon 1.8.1 – 1.8.2. There is no NeoOrigins on Fabric, so every player is a Super Pallet Towner, as in the NeoForge edition without NeoOrigins. The same `config/super_pallet_towner-common.toml` switch turns it off for everyone.
