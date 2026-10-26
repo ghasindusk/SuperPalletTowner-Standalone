@@ -31,6 +31,25 @@ Open it with the **Open Pokémon Affinity** key (**Y** by default; change it in 
 ![Resonance effects](docs/images/resonance_effects.png)
 ![Resonance links](docs/images/resonance_links.png)
 
+### Keys (default settings)
+
+| Key | What it does |
+|---|---|
+| **Y** | Opens the Pokémon Affinity screen. Shown in Controls as **Open Pokémon Affinity** under **Super Pallet Towner**. |
+
+Y is not used by Minecraft, Cobblemon or NeoOrigins. Some other add-ons may use it too (for example, Cobblemon Raid Dens uses Y to accept a raid). If a key is shared, Controls shows it in red; give one of them another key there. Before 1.2.0 this key was unassigned; players who already set a key keep theirs.
+
+Inside the Pokémon Affinity screen:
+
+| Key | What it does |
+|---|---|
+| Click | Add or remove a type (on the Link tab: apply or clear a link) |
+| 1 – 3 | Clear that resonance slot (not on the HUD tab) |
+| Tab | Next tab (Shift + Tab: previous tab) |
+| Enter | Done (close the screen); keypad Enter works too |
+| Shift (hold) | Full details of the type under the cursor (return gifts, conditions) |
+| Esc | Close the screen |
+
 ### Named links
 
 | Pair | Link | Trio | Harmonic |
