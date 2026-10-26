@@ -9,6 +9,9 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 
+import java.util.Collection;
+import java.util.List;
+
 /**
  * The few things the shared code needs from the mod loader. NeoForge and Fabric each install one
  * implementation from their entry point before anything else runs.
@@ -17,8 +20,8 @@ public interface TrainerPlatform {
     /** Whether NeoOrigins is installed (never on Fabric). */
     default boolean originsLoaded() { return false; }
 
-    /** The player's primary NeoOrigins Origin id, or {@code null}; only called when {@link #originsLoaded()}. */
-    default String primaryOrigin(ServerPlayer player) { return null; }
+    /** The player's NeoOrigins Origin ids on every layer; only called when {@link #originsLoaded()}. */
+    default Collection<String> origins(ServerPlayer player) { return List.of(); }
 
     /** Every player tick, after the resonance effects (NeoOrigins: Psychic cooldown reduction). */
     default void originsTick(ServerPlayer player) {}

@@ -8,7 +8,7 @@
 - **With NeoOrigins (NeoForge):** it becomes the Super Pallet Towner Origin, replacing NeoOrigins' Monster Tamer. Players who choose it get the abilities.
 - **Fabric:** a Fabric edition is available too. It works like the NeoForge edition without NeoOrigins: every player gets the abilities.
 
-Minecraft 1.21.1 / NeoForge or Fabric · Version 1.3.1 · [日本語の説明はこちら](README_JA.md)
+Minecraft 1.21.1 / NeoForge or Fabric · Version 1.3.2 · [日本語の説明はこちら](README_JA.md)
 
 ![Origin selection](docs/images/origin_select.png)
 
@@ -70,7 +70,7 @@ Install on both client and server. Use the Jar for your loader.
 
 | | NeoForge edition | Fabric edition |
 |---|---|---|
-| Jar | `super_pallet_towner-neoforge-1.3.1.jar` | `super_pallet_towner-fabric-1.3.1.jar` |
+| Jar | `super_pallet_towner-neoforge-1.3.2.jar` | `super_pallet_towner-fabric-1.3.2.jar` |
 | Loader (Minecraft 1.21.1) | NeoForge 21.1.251 or newer 21.1.x | Fabric Loader 0.17.2 or newer + Fabric API 0.116.6 or newer |
 | Cobblemon | 1.8.1 – 1.8.3 (NeoForge) | 1.8.1 – 1.8.3 (Fabric) |
 | NeoOrigins | optional, 2.2.29 – 2.2.30 | not available |
@@ -80,7 +80,7 @@ On NeoForge, Kotlin for Forge is required by Cobblemon. If you install NeoOrigin
 ## Installation
 
 1. Back up your world.
-2. Download the Jar for your loader (`super_pallet_towner-neoforge-1.3.1.jar` or `super_pallet_towner-fabric-1.3.1.jar`) from [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) and put it in `mods`.
+2. Download the Jar for your loader (`super_pallet_towner-neoforge-1.3.2.jar` or `super_pallet_towner-fabric-1.3.2.jar`) from [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) and put it in `mods`.
 3. Press **Y** (Open Pokémon Affinity) to choose your types. You can change the key in Controls.
 4. With NeoOrigins only: choose **Super Pallet Towner** on the Origin screen. Players who chose Monster Tamer are moved to Super Pallet Towner automatically.
 

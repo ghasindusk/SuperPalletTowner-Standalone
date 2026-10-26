@@ -8,7 +8,7 @@
 - **NeoOrigins も入れる場合（NeoForge）：** NeoOrigins のビーストテイマー（Monster Tamer）を置き換えるオリジン「超マサラ人」になります。このオリジンを選んだプレイヤーが能力を使えます。
 - **Fabric：** Fabric 版もあります。NeoOrigins なしの NeoForge 版と同じく、すべてのプレイヤーが能力を使えます。
 
-Minecraft 1.21.1 / NeoForge または Fabric・バージョン 1.3.1・[English](README.md)
+Minecraft 1.21.1 / NeoForge または Fabric・バージョン 1.3.2・[English](README.md)
 
 ![オリジン選択画面](docs/images/origin_select.png)
 
@@ -70,7 +70,7 @@ Minecraft 1.21.1 / NeoForge または Fabric・バージョン 1.3.1・[English]
 
 | | NeoForge 版 | Fabric 版 |
 |---|---|---|
-| jar | `super_pallet_towner-neoforge-1.3.1.jar` | `super_pallet_towner-fabric-1.3.1.jar` |
+| jar | `super_pallet_towner-neoforge-1.3.2.jar` | `super_pallet_towner-fabric-1.3.2.jar` |
 | ローダー（Minecraft 1.21.1） | NeoForge 21.1.251 以降の 21.1.x | Fabric Loader 0.17.2 以降 ＋ Fabric API 0.116.6 以降 |
 | Cobblemon | 1.8.1 – 1.8.3（NeoForge 版） | 1.8.1 – 1.8.3（Fabric 版） |
 | NeoOrigins | 任意、2.2.29 – 2.2.30 | 使えません |
@@ -80,7 +80,7 @@ NeoForge では、Kotlin for Forge が Cobblemon に必要です。NeoOrigins �
 ## 導入
 
 1. ワールドをバックアップします。
-2. [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) から、ローダーに合った jar（`super_pallet_towner-neoforge-1.3.1.jar` または `super_pallet_towner-fabric-1.3.1.jar`）をダウンロードし、`mods` に入れます。
+2. [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) から、ローダーに合った jar（`super_pallet_towner-neoforge-1.3.2.jar` または `super_pallet_towner-fabric-1.3.2.jar`）をダウンロードし、`mods` に入れます。
 3. **Y** キー（タイプ共鳴を開く）でタイプを選びます。キーは操作設定で変えられます。
 4. NeoOrigins がある場合のみ：オリジン選択画面で「超マサラ人」を選びます。ビーストテイマーを選んでいたプレイヤーは、自動で超マサラ人に移ります。
 

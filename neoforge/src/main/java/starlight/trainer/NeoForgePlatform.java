@@ -15,6 +15,7 @@ import net.neoforged.neoforge.event.EventHooks;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.lang.reflect.Field;
+import java.util.Collection;
 
 /** NeoForge side of {@link TrainerPlatform}. NeoOrigins is reached only behind {@link OriginsCompat#loaded()}. */
 final class NeoForgePlatform implements TrainerPlatform {
@@ -28,8 +29,8 @@ final class NeoForgePlatform implements TrainerPlatform {
     }
 
     @Override
-    public String primaryOrigin(ServerPlayer player) {
-        return NeoOriginsBridge.primaryOrigin(player);
+    public Collection<String> origins(ServerPlayer player) {
+        return NeoOriginsBridge.origins(player);
     }
 
     @Override

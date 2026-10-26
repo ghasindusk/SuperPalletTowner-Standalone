@@ -67,7 +67,7 @@ public final class TrainerState {
     public static boolean isTrainer(ServerPlayer player) {
         TrainerPlatform platform = TrainerPlatform.get();
         boolean origins = platform.originsLoaded();
-        return TrainerOriginLogic.isTrainer(origins, origins ? platform.primaryOrigin(player) : null,
+        return TrainerOriginLogic.isTrainer(origins, origins ? platform.origins(player) : java.util.List.of(),
                 TrainerSettings.allPlayersWithoutOrigins());
     }
 
