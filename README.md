@@ -134,6 +134,10 @@ Requires Java 21. The source has three parts: `common` (shared code, compiled ag
 1. Put the NeoForge Cobblemon 1.8.3 and NeoOrigins 2.2.30 Jars in `libs/`, and the Fabric Cobblemon 1.8.3 Jar in `downloads_cobblemon_1.8.3/` (the version is `cobblemon_version` in `gradle.properties`) (used only to compile; nothing is bundled, and NeoOrigins stays optional at runtime).
 2. Run `gradlew build`. The Jars are written to `neoforge/build/libs/` and `fabric/build/libs/`.
 
+## Support
+
+If you enjoy Super Pallet Towner, you can support its development on [Ko-fi](https://ko-fi.com/ghasindusk). It is entirely optional; the mod stays free.
+
 ## License
 
 MIT. This is an unofficial fan project, not endorsed by the developers of Cobblemon or NeoOrigins. No assets from those mods are included; see [THIRD_PARTY.md](THIRD_PARTY.md).

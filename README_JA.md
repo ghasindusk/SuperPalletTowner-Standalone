@@ -134,6 +134,10 @@ Java 21 が必要です。ソースは `common`（共通部分。ローダーの
 1. NeoForge 版 Cobblemon 1.8.3 と NeoOrigins 2.2.30 の jar を `libs/` に、Fabric 版 Cobblemon 1.8.3 の jar を `downloads_cobblemon_1.8.3/`（版は `gradle.properties` の `cobblemon_version`） に置きます（コンパイル時のみ使い、同梱はしません。実行時の NeoOrigins は任意のままです）。
 2. `gradlew build` を実行します。jar は `neoforge/build/libs/` と `fabric/build/libs/` にできます。
 
+## 支援
+
+超マサラ人を気に入っていただけたら、[Ko-fi](https://ko-fi.com/ghasindusk) から開発を支援していただけます。支援は任意で、MOD はこれからも無料です。
+
 ## ライセンス
 
 MIT。非公式のファン制作物で、Cobblemon・NeoOrigins の開発者による承認は受けていません。これらの MOD の素材は含んでいません。詳しくは [THIRD_PARTY.md](THIRD_PARTY.md) を見てください。
