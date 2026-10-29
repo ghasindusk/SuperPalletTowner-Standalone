@@ -122,7 +122,7 @@ def main() -> None:
 - Unit tests: {tests} passed, 0 failed.
 - NeoForge Jar SHA-256: `{sha256(NEO_JAR)}`.
 - Fabric Jar SHA-256: `{sha256(FABRIC_JAR)}`.
-- NeoForge: the NeoOrigins primary layer, the Super Pallet Towner Origin and five power descriptions; NeoOrigins is optional (2.2.29 – 2.2.30 when installed). No Dragonborn suborigin layer or `dragonborn_path` payload.
+- NeoForge: the NeoOrigins primary layer, the Super Pallet Towner Origin and five power descriptions; NeoOrigins is optional (2.2.29 – 2.2.32 when installed). No Dragonborn suborigin layer or `dragonborn_path` payload.
 - Fabric: no NeoForge or NeoOrigins classes or Origin data; requires Fabric API and Cobblemon 1.8.1+.
 - Both: Japanese and English language entries, the resonance data and an MIT LICENSE.
 """

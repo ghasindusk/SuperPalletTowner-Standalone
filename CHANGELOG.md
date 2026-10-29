@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.3 — 2026-10-29
+
+- Supports **NeoOrigins 2.2.31 and 2.2.32** (2.2.29 – 2.2.30 still work). With these versions, 1.3.2 and older stopped the game from starting. Their main Origin list is unchanged, so the embedded Origin data is the same.
+- Supports **Cobblemon 1.8.4** on both NeoForge and Fabric. Both Jars are built against 1.8.4; no code changes were needed.
+- Includes 1.3.2, which was released on GitHub only.
+
 ## 1.3.2 — 2026-10-26
 
 - NeoForge: a player is a trainer when **any** Origin layer holds Super Pallet Towner, not only the main layer. Modpacks that offer Super Pallet Towner as a sub-origin on a layer of their own lost Type Resonance from 1.1.x on; it works again. With only the main layer (the usual setup) nothing changes.

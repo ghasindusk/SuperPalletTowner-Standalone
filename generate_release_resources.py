@@ -13,7 +13,7 @@ import zipfile
 
 
 ROOT = Path(__file__).resolve().parent
-NEO_JAR = ROOT / "libs" / "neoorigins-2.2.30+1.21.1.jar"
+NEO_JAR = ROOT / "libs" / "neoorigins-2.2.32+1.21.1.jar"
 # NeoOrigins content only exists in the NeoForge Jar.
 OUT = ROOT / "neoforge" / "src" / "main" / "resources"
 LAYER = "data/neoorigins/origins/origin_layers/origin.json"
