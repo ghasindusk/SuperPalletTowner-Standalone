@@ -10,7 +10,9 @@
 
 Minecraft 1.21.1 / NeoForge または Fabric・バージョン 1.3.3・[English](README.md)
 
-![オリジン選択画面](docs/images/origin_select.png)
+![砂浜でピカチュウ・ヒトカゲ・ゼニガメを出し、HUD にほのお・みず・でんきの共鳴が表示されている](docs/images/gameplay.png)
+
+*Cobblemon だけ（NeoOrigins なし）の環境。手持ちのほのお・みず・でんきが共鳴中（右下の HUD）。*
 
 ## 能力
 
@@ -112,6 +114,8 @@ Fabric 版では、HUD はホットバーのすぐ上ではなく、バニラの
 ### NeoOrigins ありの場合
 
 オリジンのデータは jar に入っているので、データパックは別に必要ありません。ビーストテイマーを置き換えるために NeoOrigins のメインのオリジン一覧を上書きしているため、同じ一覧を上書きする他のアドオンとは競合することがあります。
+
+![NeoOrigins のオリジン選択画面の超マサラ人](docs/images/origin_select.png)
 
 ## 確認状況
 

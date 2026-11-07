@@ -10,7 +10,9 @@
 
 Minecraft 1.21.1 / NeoForge or Fabric · Version 1.3.3 · [日本語の説明はこちら](README_JA.md)
 
-![Origin selection](docs/images/origin_select.png)
+![Pikachu, Charmander and Squirtle out on a beach, with Fire, Water and Electric resonating in the HUD](docs/images/gameplay.png)
+
+*Cobblemon only, no NeoOrigins: Fire, Water and Electric from the party resonate (HUD, bottom right).*
 
 ## Abilities
 
@@ -112,6 +114,8 @@ On Fabric the HUD is drawn after the vanilla HUD rather than just above the hotb
 ### With NeoOrigins
 
 The Origin data is inside the Jar, so no separate data pack is needed. This add-on replaces NeoOrigins' main Origin list to swap out Monster Tamer. Other add-ons that replace the same list may conflict.
+
+![The Super Pallet Towner Origin on the NeoOrigins Origin screen](docs/images/origin_select.png)
 
 ## Status
 
