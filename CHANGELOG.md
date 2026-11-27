@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.4 — 2026-11-27
+
+- Supports **NeoOrigins 2.2.33 – 2.2.42** (2.2.29 – 2.2.32 still work). With these NeoOrigins versions, 1.3.3 and older stopped the game from starting. Their main Origin list is unchanged, so the embedded Origin data is the same.
+- Built against NeoOrigins 2.2.42 and Cobblemon 1.8.4. No code changes; the Fabric Jar is only rebuilt with the new version number.
+
 ## 1.3.3 — 2026-10-29
 
 - Supports **NeoOrigins 2.2.31 and 2.2.32** (2.2.29 – 2.2.30 still work). With these versions, 1.3.2 and older stopped the game from starting. Their main Origin list is unchanged, so the embedded Origin data is the same.

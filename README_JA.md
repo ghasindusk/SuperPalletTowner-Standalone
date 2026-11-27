@@ -8,7 +8,7 @@
 - **NeoOrigins も入れる場合（NeoForge）：** NeoOrigins のビーストテイマー（Monster Tamer）を置き換えるオリジン「超マサラ人」になります。このオリジンを選んだプレイヤーが能力を使えます。
 - **Fabric：** Fabric 版もあります。NeoOrigins なしの NeoForge 版と同じく、すべてのプレイヤーが能力を使えます。
 
-Minecraft 1.21.1 / NeoForge または Fabric・バージョン 1.3.3・[English](README.md)
+Minecraft 1.21.1 / NeoForge または Fabric・バージョン 1.3.4・[English](README.md)
 
 ![砂浜でピカチュウ・ヒトカゲ・ゼニガメを出し、HUD にほのお・みず・でんきの共鳴が表示されている](docs/images/gameplay.png)
 
@@ -91,17 +91,17 @@ Y は Minecraft・Cobblemon・NeoOrigins では使われていません。ほか
 
 | | NeoForge 版 | Fabric 版 |
 |---|---|---|
-| jar | `super_pallet_towner-neoforge-1.3.3.jar` | `super_pallet_towner-fabric-1.3.3.jar` |
+| jar | `super_pallet_towner-neoforge-1.3.4.jar` | `super_pallet_towner-fabric-1.3.4.jar` |
 | ローダー（Minecraft 1.21.1） | NeoForge 21.1.251 以降の 21.1.x | Fabric Loader 0.17.2 以降 ＋ Fabric API 0.116.6 以降 |
 | Cobblemon | 1.8.1 – 1.8.4（NeoForge 版） | 1.8.1 – 1.8.4（Fabric 版） |
-| NeoOrigins | 任意、2.2.29 – 2.2.32 | 使えません |
+| NeoOrigins | 任意、2.2.29 – 2.2.42 | 使えません |
 
 NeoForge では、Kotlin for Forge が Cobblemon に必要です。NeoOrigins を入れる場合は上の確認済みの版にしてください。この MOD は NeoOrigins のメインのオリジン一覧を置き換えるためです。
 
 ## 導入
 
 1. ワールドをバックアップします。
-2. [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) から、ローダーに合った jar（`super_pallet_towner-neoforge-1.3.3.jar` または `super_pallet_towner-fabric-1.3.3.jar`）をダウンロードし、`mods` に入れます。
+2. [Releases](https://github.com/ghasindusk/SuperPalletTowner-Standalone/releases) から、ローダーに合った jar（`super_pallet_towner-neoforge-1.3.4.jar` または `super_pallet_towner-fabric-1.3.4.jar`）をダウンロードし、`mods` に入れます。
 3. **Y** キー（タイプ共鳴を開く）でタイプを選びます。キーは操作設定で変えられます。
 4. NeoOrigins がある場合のみ：オリジン選択画面で「超マサラ人」を選びます。ビーストテイマーを選んでいたプレイヤーは、自動で超マサラ人に移ります。
 
@@ -124,6 +124,7 @@ Fabric 版では、HUD はホットバーのすぐ上ではなく、バニラの
 - 1.2.0 を NeoOrigins なし（NeoForge、Cobblemon、Kotlin for Forge だけ）で確認：専用サーバーがエラーなしで起動・停止。ゲーム内でタイプ共鳴画面が開き、スロットが有効になり、HUD が表示される
 - 1.2.0 を NeoOrigins 2.2.30 ありで確認：専用サーバーがエラーなしで起動し、オリジンを読み込む
 - 専用サーバーで動作確認済み（1.1.1より前の版にあったサーバークラッシュは修正済み）
+- 1.3.4 を Cobblemon 1.8.4・NeoOrigins 2.2.42 で確認：専用サーバーは Fabric・NeoForge（NeoOrigins あり・なし）ともこの MOD 由来のエラーなしで起動。NeoOrigins 2.2.42 のゲーム内で、オリジンと保存したタイプを持つプレイヤーがワールドに入るとはがね・いわの効果がかかることを確認。1.3.3 は NeoOrigins 2.2.42 では起動しない
 - 1.3.3 を Cobblemon 1.8.4・NeoOrigins 2.2.32 で確認：専用サーバーは Fabric・NeoForge（NeoOrigins あり・なし）ともこの MOD 由来のエラーなしで起動。ゲーム内で、オリジンと保存したタイプを持つプレイヤーがワールドに入ると共鳴の効果がかかることを確認（NeoForge＋NeoOrigins でははがね・いわ、Fabric ではノーマル）。1.3.2 は NeoOrigins 2.2.32 では起動しない
 - 1.3.1 を Cobblemon 1.8.3 で確認：専用サーバーは Fabric・NeoForge（NeoOrigins あり・なし）とも 1.8.2 のときと同じく起動。両ローダーのゲーム内で、Y キーの画面、保存したタイプの有効化、ほのおの炎ダメージ無効を確認。Fabric ではノーマルの移動速度、フェアリーの毒短縮、Cobblemon のサマリー画面のタイプアイコンの光も確認
 - 1.3.0 Fabric 版（Fabric Loader 0.17.2、Fabric API 0.116.7、Cobblemon 1.8.2）：専用サーバーがこの MOD 由来のエラーなしで起動。ゲーム内で、Y キーでタイプ共鳴画面が開く、スロットの有効化、HUD の表示、ワールドに入り直しても選んだタイプが残る、ノーマルで移動速度が上がる、ほのおで炎ダメージを受けない、フェアリーで毒の時間が短くなる、を確認
@@ -136,7 +137,7 @@ Fabric 版では、HUD はホットバーのすぐ上ではなく、バニラの
 
 Java 21 が必要です。ソースは `common`（共通部分。ローダーの API が混ざらないよう、素の Minecraft だけでコンパイル）、`neoforge`、`fabric` の3つに分かれています。
 
-1. NeoForge 版 Cobblemon 1.8.4 と NeoOrigins 2.2.32 の jar を `libs/` に、Fabric 版 Cobblemon 1.8.4 の jar を `downloads_cobblemon_1.8.4/`（版は `gradle.properties` の `cobblemon_version`） に置きます（コンパイル時のみ使い、同梱はしません。実行時の NeoOrigins は任意のままです）。
+1. NeoForge 版 Cobblemon 1.8.4 と NeoOrigins 2.2.42 の jar を `libs/` に、Fabric 版 Cobblemon 1.8.4 の jar を `downloads_cobblemon_1.8.4/`（版は `gradle.properties` の `cobblemon_version`） に置きます（コンパイル時のみ使い、同梱はしません。実行時の NeoOrigins は任意のままです）。
 2. `gradlew build` を実行します。jar は `neoforge/build/libs/` と `fabric/build/libs/` にできます。
 
 ## 支援
